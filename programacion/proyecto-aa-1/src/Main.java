@@ -1,24 +1,22 @@
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+
+    private static final Scanner scanner = new Scanner(System.in);
+
     static char[][] tableroJugador1= new char[6][6];
+
     static char[][] tableroJugador2 = new char[6][6];
+
     public static void main(String[] args) {
-        Tablero tablero1 = new Tablero();
-        Tablero tablero2 = new Tablero();
-        tablero1.initializeTablero(tableroJugador1);
+        char[] datos1 = pedirDatos(1);
+        Tablero tablero1 = new Tablero(datos1[0], datos1[1]);
+        tablero1.initializeTablero();
         tablero1.generarPosicionJugador();
         tablero1.generarPosicionEnemigos();
-        char[] datos1 = pedirDatos(1);
-        tablero1.insertPosiciones(datos1[0], datos1[1], tableroJugador1);
-        tablero1.printTablero(tableroJugador1);
-        tablero2.initializeTablero(tableroJugador2);
-        tablero2.generarPosicionJugador();
-        tablero2.generarPosicionEnemigos();
-        char[] datos2 = pedirDatos(2);
-        tablero2.insertPosiciones(datos2[0], datos2[1], tableroJugador2);
-        tablero2.printTablero(tableroJugador2);
+        tablero1.generarCasillaSalida();
+        tablero1.insertPosiciones();
+        tablero1.printTablero();
     }
 
     static char[] pedirDatos(int jugador){

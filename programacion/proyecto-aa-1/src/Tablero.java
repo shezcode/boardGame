@@ -3,17 +3,24 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tablero {
-    static final int NUMERO_ENEMIGOS= 8;
 
-    static int posicionJugador;
+    char[][] tablero = new char[6][6];
+    char letraJugador;
+    char letraEnemigo;
+    static final int NUMERO_ENEMIGOS= 8;
+    int posicionJugador;
+    int posicionSalida;
 
     static int[] posicionEnemigo = new int[NUMERO_ENEMIGOS];
 
-    static Random generator = new Random();
+    Random generator = new Random();
 
+    public Tablero(char letraJugador, char letraEnemigo){
+        this.letraJugador = letraJugador;
+        this.letraEnemigo = letraEnemigo;
+    }
 
-
-    void initializeTablero(char[][] tablero){
+    void initializeTablero(){
         for (char[] fila : tablero){
             Arrays.fill(fila, 'L');
         }
@@ -35,12 +42,21 @@ public class Tablero {
         Arrays.sort(posicionEnemigo);
     }
 
-    void insertPosiciones(char letraJugador, char letraEnemigo, char[][] tablero){
+    void generarCasillaSalida(){
+        do {
+           posicionSalida = generator.nextInt(36);
+        } while (posicionSalida == posicionJugador || Utils.contains(posicionEnemigo, posicionSalida));
+    }
+
+    void insertPosiciones(){
         int contador = 0;
         for (int i = 0; i<6; i++){
             for (int j = 0; j < 6; j++){
                 if (contador == posicionJugador){
                     tablero[i][j] = letraJugador;
+                }
+                if (contador == posicionSalida){
+                    tablero[i][j] = 'S';
                 }
                 if (Utils.contains(posicionEnemigo, contador)){
                     tablero[i][j] = letraEnemigo;
@@ -50,7 +66,7 @@ public class Tablero {
         }
     }
 
-    void printTablero(char[][] tablero){
+    void printTablero(){
         for (char[] fila : tablero){
             System.out.println(Arrays.toString(fila));
         }
