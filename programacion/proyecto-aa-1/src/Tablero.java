@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class Tablero {
 
     char[][] tablero = new char[6][6];
     public Tablero(){
-        
+
     }
 
     void initializeTablero(char[][] tablero){
@@ -32,7 +33,7 @@ public class Tablero {
             do {
                 valor = generator.nextInt(36);
             }
-            while (valor == posicionJugador || contains(posicionEnemigo, valor));
+            while (valor == posicionJugador || Utils.contains(posicionEnemigo, valor));
             posicionEnemigo[i] = valor;
         }
         Arrays.sort(posicionEnemigo);
@@ -46,7 +47,7 @@ public class Tablero {
                 if (contador == posicionJugador){
                     tablero[i][j] = letraJugador;
                 }
-                if (contains(posicionEnemigo, contador)){
+                if (Utils.contains(posicionEnemigo, contador)){
                     tablero[i][j] = letraEnemigo;
                 }
                 contador++;
@@ -59,15 +60,6 @@ public class Tablero {
             System.out.println(Arrays.toString(fila));
         }
         System.out.println();
-    }
-
-    boolean contains(int[] array, int value){
-        for (int number : array){
-            if (number == value){
-                return true;
-            }
-        }
-        return false;
     }
 
 }
