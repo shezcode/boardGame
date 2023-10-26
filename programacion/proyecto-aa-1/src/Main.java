@@ -9,5 +9,10 @@ public class Main {
         tablero1.generarPosicionEnemigos();
         tablero1.insertPosiciones('H', 'F', tableroHomer);
         tablero1.printTablero(tableroHomer);
+        tablero2.initializeTablero(tableroBart);
+        tablero2.generarPosicionJugador();
+        tablero2.generarPosicionEnemigos();
+        tablero2.insertPosiciones('B', 'K', tableroBart);
+        tablero2.printTablero(tableroBart);
     }
 }

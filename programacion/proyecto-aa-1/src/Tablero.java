@@ -11,10 +11,7 @@ public class Tablero {
 
     static Random generator = new Random();
 
-    char[][] tablero = new char[6][6];
-    public Tablero(){
 
-    }
 
     void initializeTablero(char[][] tablero){
         for (char[] fila : tablero){
@@ -22,12 +19,11 @@ public class Tablero {
         }
     }
 
-    int generarPosicionJugador(){
+    void generarPosicionJugador(){
         posicionJugador = generator.nextInt(36);
-        return posicionJugador;
     }
 
-    int[] generarPosicionEnemigos(){
+    void generarPosicionEnemigos(){
         for (int i = 0; i < NUMERO_ENEMIGOS; i++){
             int valor;
             do {
@@ -37,7 +33,6 @@ public class Tablero {
             posicionEnemigo[i] = valor;
         }
         Arrays.sort(posicionEnemigo);
-        return posicionEnemigo;
     }
 
     void insertPosiciones(char letraJugador, char letraEnemigo, char[][] tablero){
