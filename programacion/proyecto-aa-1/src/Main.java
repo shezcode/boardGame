@@ -4,19 +4,12 @@ public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    static char[][] tableroJugador1= new char[6][6];
-
-    static char[][] tableroJugador2 = new char[6][6];
-
     public static void main(String[] args) {
-        char[] datos1 = pedirDatos(1);
-        Tablero tablero1 = new Tablero(datos1[0], datos1[1]);
-        tablero1.initializeTablero();
-        tablero1.generarPosicionJugador();
-        tablero1.generarPosicionEnemigos();
-        tablero1.generarCasillaSalida();
-        tablero1.insertPosiciones();
-        tablero1.printTablero();
+        // char[] datos1 = pedirDatos(1);
+        Homer jugador2 = new Homer();
+        jugador2.setTablero();
+        jugador2.printTableroJugador();
+        jugador2.printTableroReal();
     }
 
     static char[] pedirDatos(int jugador){
