@@ -26,8 +26,9 @@ public class Tablero {
         }
     }
 
-    void generarPosicionJugador(){
+    int generarPosicionJugador(){
         posicionJugador = generator.nextInt(36);
+        return posicionJugador;
     }
 
     void generarPosicionEnemigos(){
@@ -48,24 +49,28 @@ public class Tablero {
         } while (posicionSalida == posicionJugador || Utils.contains(posicionEnemigo, posicionSalida));
     }
 
-    void insertPosiciones(){
+    void insertPosiciones(int posJugador){
         int contador = 0;
         for (int i = 0; i<6; i++){
             for (int j = 0; j < 6; j++){
-                if (contador == posicionJugador){
-                    tablero[i][j] = letraJugador;
+                if (contador == posJugador){
+                    tablero[i][j] = this.letraJugador;
                 }
-                if (contador == posicionSalida){
+                if (contador == this.posicionSalida){
                     tablero[i][j] = 'S';
                 }
                 if (Utils.contains(posicionEnemigo, contador)){
-                    tablero[i][j] = letraEnemigo;
+                    tablero[i][j] = this.letraEnemigo;
                 }
                 contador++;
             }
         }
     }
 
+    void moverJugador(int nuevaPosicion){
+        this.posicionJugador = nuevaPosicion;
+        insertPosiciones(nuevaPosicion);
+    }
     void printTablero(){
         for (char[] fila : tablero){
             System.out.println(Arrays.toString(fila));
@@ -73,4 +78,11 @@ public class Tablero {
         System.out.println();
     }
 
+    public int getPosicionJugador() {
+        return this.posicionJugador;
+    }
+
+    public void setPosicionJugador(int posicionJugador) {
+        this.posicionJugador = posicionJugador;
+    }
 }
