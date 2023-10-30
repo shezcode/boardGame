@@ -32,7 +32,6 @@ public abstract class Jugador {
 
     public Tablero setTablero(){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
-        tableroJugador.initializeTablero();
         tableroJugador.generarPosicionEnemigos();
         tableroJugador.generarCasillaSalida();
         tableroJugador.insertPosiciones(tableroJugador.generarPosicionJugador());
