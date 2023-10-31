@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public abstract class Jugador {
+public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
     int vidas = 3;
     String nombre;
@@ -32,9 +32,10 @@ public abstract class Jugador {
 
     public Tablero setTablero(){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
-        tableroJugador.generarPosicionEnemigos();
+        int[] pos = tableroJugador.generarPosicionJugador();
         tableroJugador.generarCasillaSalida();
-        tableroJugador.insertPosiciones(tableroJugador.generarPosicionJugador());
+        tableroJugador.generarPosicionEnemigos();
+        tableroJugador.insertPosiciones(pos);
         return tableroJugador;
     }
 
@@ -71,24 +72,6 @@ public abstract class Jugador {
             isValid = Utils.validarInput(input);
         } while (!isValid);
         return new Movimiento(Integer.parseInt(String.valueOf(input.charAt(0))), input.charAt(1));
-    }
-
-    public void realizarMovimiento(Movimiento movimiento){
-         int posicion = this.tablero.getPosicionJugador();
-         int fila = posicion / 6;
-         int casillas = movimiento.getCasillas();
-         char direccion = movimiento.getDireccion();
-
-        if (direccion == 'a'){
-            int posicionFinal = posicion - casillas;
-            if (posicionFinal / 6 != fila){
-                posicionFinal = fila * 6;
-            }
-
-           this.tablero.setPosicionJugador(posicionFinal);
-           this.tablero.moverJugador(posicionFinal);
-           printTableroJugador();
-        }
     }
 
     public String getEnemigo() {
