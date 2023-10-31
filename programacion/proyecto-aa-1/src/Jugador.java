@@ -1,8 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static com.diogonunes.jcolor.Ansi.colorize;
-
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
     int vidas = 3;
@@ -36,11 +34,11 @@ public class Jugador {
     public Tablero initTablero(){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
         tableroJugador.generarPosicionEnemigos();
-        tableroJugador.generarPosicionJugador();
+        int[] pos = tableroJugador.generarPosicionJugador();
         tableroJugador.generarCasillaSalida();
         tableroJugador.generarCasillaBomba();
         tableroJugador.generarCasillasVidas();
-        tableroJugador.insertPosiciones();
+        tableroJugador.insertPosiciones(pos);
         return tableroJugador;
     }
 
@@ -72,6 +70,84 @@ public class Jugador {
         return new Movimiento(Integer.parseInt(String.valueOf(input.charAt(0))), input.charAt(1));
     }
 
+    void registrarMovimiento(Movimiento movimiento){
+        if (movimiento.direccion == 'a'){
+            int i = tablero.getPosicionJugador()[0];
+            int j = tablero.getPosicionJugador()[1] - movimiento.casillas;
+            if (j < 0){
+                j = 0;
+            }
+            int[] nuevaPosicion = {i, j};
+            tablero.setPosicionJugador(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion);
+        }
+        if (movimiento.direccion == 'd'){
+            int i = tablero.getPosicionJugador()[0];
+            int j = tablero.getPosicionJugador()[1] + movimiento.casillas;
+            if (j > 5){
+                j = 5;
+            }
+            int[] nuevaPosicion = {i, j};
+            tablero.setPosicionJugador(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion);
+        }
+        if (movimiento.direccion == 'w'){
+            int i = tablero.getPosicionJugador()[0] - movimiento.casillas;
+            int j = tablero.getPosicionJugador()[1];
+            if (i < 0){
+                i = 0;
+            }
+            int[] nuevaPosicion = {i, j};
+            tablero.setPosicionJugador(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion);
+        }
+        if (movimiento.direccion == 's'){
+            int i = tablero.getPosicionJugador()[0] + movimiento.casillas;
+            int j = tablero.getPosicionJugador()[1];
+            if (i > 5){
+                i = 5;
+            }
+            int[] nuevaPosicion = {i, j};
+            tablero.setPosicionJugador(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion);
+        }
+        printTableroReal();
+    }
+
+    void evaluarMovimiento(int[] nuevaPos){
+        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == this.enemigo.charAt(0)){
+           this.vidas = decreaseVidas();
+           System.out.println("Acabas de caer en la posicion de un enemigo. " + this.vidas + " vidas restantes." );
+        }
+        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
+            this.vidas = increaseVidas();
+            System.out.println("Acabas de caer en una vida extra. " + this.vidas + " restantes." );
+        }
+        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'X'){
+            setHasBomb(true);
+        }
+        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'S'){
+            setHasWon(true);
+        }
+    }
+
+    void evaluarPartida(){
+        if (hasWon){
+            System.out.println(this.nombre + " ha ganado!");
+            return;
+        }
+        if (!isAlive()){
+            System.out.println(this.nombre + " ha perdido!");
+            alive = false;
+            return;
+        }
+        if (hasBomb){
+            System.out.println(this.nombre + " acaba de recibir la bomba");
+            return;
+        }
+        System.out.println("Partida continua");
+    }
+
     public String getEnemigo() {
         return this.enemigo;
     }
@@ -84,4 +160,19 @@ public class Jugador {
         return this.tablero;
     }
 
+    public boolean isHasBomb() {
+        return hasBomb;
+    }
+
+    public void setHasBomb(boolean hasBomb) {
+        this.hasBomb = hasBomb;
+    }
+
+    public boolean isHasWon() {
+        return hasWon;
+    }
+
+    public void setHasWon(boolean hasWon) {
+        this.hasWon = hasWon;
+    }
 }

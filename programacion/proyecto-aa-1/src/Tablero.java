@@ -39,7 +39,7 @@ public class Tablero {
         }
         //Arrays.sort(posicionEnemigo, (a, b) -> a[0] - b[0]);
     }
-    void generarPosicionJugador(){
+    int[] generarPosicionJugador(){
         int[] arr = new int[2];
         do {
             arr[0] = generator.nextInt(6);
@@ -47,6 +47,7 @@ public class Tablero {
         } while (Utils.contains(this.posicionesEnemigos, arr));
         posicionJugador[0] = arr[0];
         posicionJugador[1] = arr[1];
+        return posicionJugador;
     }
 
     void generarCasillaSalida(){
@@ -82,12 +83,12 @@ public class Tablero {
     }
 
 
-    void insertPosiciones(){
+    void insertPosiciones(int[] posJugador){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 6; j++){
                 tablero[i][j] = 'L';
                 int[] arr = {i, j};
-                if (Arrays.equals(posicionJugador, arr)){
+                if (Arrays.equals(posJugador, arr)){
                     tablero[i][j] = this.letraJugador;
                 }
                 if (Arrays.equals(posicionSalida, arr)){
