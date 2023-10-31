@@ -1,5 +1,9 @@
+import com.diogonunes.jcolor.Attribute;
+
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
@@ -7,7 +11,6 @@ public class Jugador {
     String nombre;
     String enemigo;
     Tablero tablero;
-
 
     boolean alive = true;
 
@@ -63,7 +66,7 @@ public class Jugador {
         boolean isValid;
         String input;
         do {
-            System.out.print(this.nombre + " introduce tu movimiento: ");
+            System.out.print(colorize( this.nombre + " introduce tu movimiento: ", Attribute.BRIGHT_CYAN_TEXT()));
             input = scanner.nextLine().toLowerCase();
             isValid = Utils.validarInput(input);
         } while (!isValid);
@@ -111,17 +114,17 @@ public class Jugador {
             tablero.setPosicionJugador(nuevaPosicion);
             tablero.insertPosiciones(nuevaPosicion);
         }
-        printTableroReal();
+        printTableroJugador();
     }
 
     void evaluarMovimiento(int[] nuevaPos){
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == this.enemigo.charAt(0)){
            this.vidas = decreaseVidas();
-           System.out.println("Acabas de caer en la posicion de un enemigo. " + this.vidas + " vidas restantes." );
+           System.out.println(colorize("Acabas de caer en la posicion de un enemigo. " + this.vidas + " vidas restantes.", Attribute.RED_TEXT()));
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
             this.vidas = increaseVidas();
-            System.out.println("Acabas de caer en una vida extra. " + this.vidas + " restantes." );
+            System.out.println(colorize("Acabas de caer en una vida extra. " + this.vidas + " restantes.", Attribute.BRIGHT_GREEN_TEXT()));
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'X'){
             setHasBomb(true);
@@ -133,11 +136,11 @@ public class Jugador {
 
     void evaluarPartida(){
         if (hasWon){
-            System.out.println(this.nombre + " ha ganado!");
+            System.out.println(colorize(this.nombre + " ha ganado!", Attribute.BRIGHT_CYAN_TEXT()));
             return;
         }
         if (!isAlive()){
-            System.out.println(this.nombre + " ha perdido!");
+            System.out.println(colorize(this.nombre + " ha perdido!", Attribute.BRIGHT_CYAN_TEXT()));
             alive = false;
             return;
         }
@@ -145,7 +148,20 @@ public class Jugador {
             System.out.println(this.nombre + " acaba de recibir la bomba");
             return;
         }
-        System.out.println("Partida continua");
+        System.out.println(colorize("Partida continua", Attribute.BRIGHT_CYAN_TEXT()));
+        System.out.println();
+        System.out.println(colorize("------------------------------------", Attribute.BRIGHT_GREEN_TEXT()));
+        System.out.println();
+    }
+
+    void turnoJugador(){
+        printTableroJugador();
+        Movimiento movimiento = pedirMovimiento();
+        registrarMovimiento(movimiento);
+        int[] newpos = this.tablero.getPosicionJugador();
+        //System.out.println(Arrays.toString(newpos));
+        evaluarMovimiento(newpos);
+        evaluarPartida();
     }
 
     public String getEnemigo() {

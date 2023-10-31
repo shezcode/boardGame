@@ -5,15 +5,15 @@ public class Main {
     public static void main(String[] args) {
         Homer jugador1 = new Homer();
         jugador1.initTablero();
-        jugador1.printTableroReal();
+
+        Bart jugador2 = new Bart();
+        jugador2.initTablero();
+
         do {
-            Movimiento movimiento = jugador1.pedirMovimiento();
-            jugador1.registrarMovimiento(movimiento);
-            int[] newpos = jugador1.tablero.getPosicionJugador();
-            System.out.println(Arrays.toString(newpos));
-            jugador1.evaluarMovimiento(newpos);
-            jugador1.evaluarPartida();
-        } while (jugador1.alive && !jugador1.hasWon);
+            jugador1.turnoJugador();
+            if (jugador1.hasWon || !jugador1.alive) break;
+            jugador2.turnoJugador();
+        } while ((jugador1.alive && !jugador1.hasWon) && ((jugador2.alive && !jugador2.hasWon)));
 
         if (jugador1.hasWon){
             System.out.println("DALE PAAAAAA");
@@ -24,8 +24,7 @@ public class Main {
             System.out.println("xd pelele");
         }
 
-        //Bart jugador2 = new Bart();
-        //jugador2.initTablero();
-        //jugador2.printTableroJugador();
     }
+
+
 }

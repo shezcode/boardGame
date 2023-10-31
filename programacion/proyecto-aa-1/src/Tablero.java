@@ -25,6 +25,7 @@ public class Tablero {
         this.letraEnemigo = letraEnemigo;
    }
 
+
     // Generacion de posiciones, orden especefico para evitar problemas en la comprobacion. Se han de llamar los metodos en este mismo orden.
 
     void generarPosicionEnemigos(){
