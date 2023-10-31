@@ -1,5 +1,9 @@
+import com.diogonunes.jcolor.Attribute;
+
 import java.util.Arrays;
 import java.util.Scanner;
+
+import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
@@ -34,20 +38,15 @@ public class Jugador {
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
         int[] pos = tableroJugador.generarPosicionJugador();
         tableroJugador.generarCasillaSalida();
+        tableroJugador.generarCasillaBomba();
+        tableroJugador.generarCasillasVidas();
         tableroJugador.generarPosicionEnemigos();
         tableroJugador.insertPosiciones(pos);
         return tableroJugador;
     }
 
 
-    void printTableroJugador(){
-        for (char[] fila : this.tablero.tablero){
-            String fila1 = Arrays.toString(fila);
-            String fila2 = fila1.replaceAll("[FSVB]", "L");
-            System.out.println(fila2);
-        }
-        System.out.println();
-    }
+    void printTableroJugador(){}
 
     void printTableroReal(){
         for (char[] fila : this.tablero.tablero){
