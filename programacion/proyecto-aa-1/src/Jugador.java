@@ -1,5 +1,3 @@
-import com.diogonunes.jcolor.Attribute;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -11,6 +9,7 @@ public class Jugador {
     String nombre;
     String enemigo;
     Tablero tablero;
+
 
     boolean alive = true;
 
@@ -34,14 +33,14 @@ public class Jugador {
         return vidas > 0;
     }
 
-    public Tablero setTablero(){
+    public Tablero initTablero(){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
-        int[] pos = tableroJugador.generarPosicionJugador();
+        tableroJugador.generarPosicionEnemigos();
+        tableroJugador.generarPosicionJugador();
         tableroJugador.generarCasillaSalida();
         tableroJugador.generarCasillaBomba();
         tableroJugador.generarCasillasVidas();
-        tableroJugador.generarPosicionEnemigos();
-        tableroJugador.insertPosiciones(pos);
+        tableroJugador.insertPosiciones();
         return tableroJugador;
     }
 

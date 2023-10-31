@@ -3,11 +3,11 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tablero {
-
     char[][] tablero = new char[6][6];
     char letraJugador;
     char letraEnemigo;
-    static final int NUMERO_ENEMIGOS= 8;
+
+    int NUMERO_ENEMIGOS = 8;
     int[] posicionJugador = new int[2];
     int[] posicionSalida = new int[2];
 
@@ -15,34 +15,54 @@ public class Tablero {
 
     int[][] posicionesVidas = new int[2][2];
 
-    static int[][] posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
+    int[][] posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
+
 
     Random generator = new Random();
 
     public Tablero(char letraJugador, char letraEnemigo){
         this.letraJugador = letraJugador;
         this.letraEnemigo = letraEnemigo;
-    }
+   }
 
     // Generacion de posiciones, orden especefico para evitar problemas en la comprobacion. Se han de llamar los metodos en este mismo orden.
-    int[] generarPosicionJugador(){
-        posicionJugador[0] = generator.nextInt(6);
-        posicionJugador[1] = generator.nextInt(6);
-        return posicionJugador;
+
+    void generarPosicionEnemigos(){
+        int[] arr = new int[2];
+        for(int i = 0; i < NUMERO_ENEMIGOS; i++){
+            do {
+                arr[0] = generator.nextInt(6);
+                arr[1] = generator.nextInt(6);
+            } while (Utils.contains(this.posicionesEnemigos, arr));
+            this.posicionesEnemigos[i][0] = arr[0];
+            this.posicionesEnemigos[i][1] = arr[1];
+        }
+        //Arrays.sort(posicionEnemigo, (a, b) -> a[0] - b[0]);
+    }
+    void generarPosicionJugador(){
+        int[] arr = new int[2];
+        do {
+            arr[0] = generator.nextInt(6);
+            arr[1] = generator.nextInt(6);
+        } while (Utils.contains(this.posicionesEnemigos, arr));
+        posicionJugador[0] = arr[0];
+        posicionJugador[1] = arr[1];
     }
 
     void generarCasillaSalida(){
         do {
             posicionSalida[0] = generator.nextInt(6);
             posicionSalida[1] = generator.nextInt(6);
-        } while (Arrays.equals(posicionSalida, posicionJugador));
+        } while (Arrays.equals(posicionSalida, posicionJugador) || Utils.contains(this.posicionesEnemigos, posicionSalida));
     }
 
     void generarCasillaBomba(){
         do {
             posicionBomba[0] = generator.nextInt(6);
             posicionBomba[1] = generator.nextInt(6);
-        } while (Arrays.equals(posicionBomba, posicionJugador) || Arrays.equals(posicionBomba, posicionSalida));
+        } while (Arrays.equals(posicionBomba, posicionJugador)
+                    || Arrays.equals(posicionBomba, posicionSalida)
+                    || Utils.contains(this.posicionesEnemigos, posicionBomba));
     }
 
     void generarCasillasVidas(){
@@ -51,35 +71,23 @@ public class Tablero {
             do {
                 arr[0] = generator.nextInt(6);
                 arr[1] = generator.nextInt(6);
-            } while (Arrays.equals(arr, posicionJugador) ||
-                    Arrays.equals(arr, posicionSalida) ||
-                    Utils.contains(posicionesVidas, arr) ||
-                    Arrays.equals(arr, posicionBomba));
+            } while (Arrays.equals(arr, posicionJugador)
+                    || Arrays.equals(arr, posicionSalida)
+                    || Utils.contains(posicionesVidas, arr)
+                    || Arrays.equals(arr, posicionBomba)
+                    || Utils.contains(this.posicionesEnemigos, arr));
             posicionesVidas[i][0] = arr[0];
             posicionesVidas[i][1] = arr[1];
         }
     }
 
-    void generarPosicionEnemigos(){
-        int[] arr = new int[2];
-        for(int i = 0; i < NUMERO_ENEMIGOS; i++){
-            do {
-                arr[0] = generator.nextInt(6);
-                arr[1] = generator.nextInt(6);
-            } while (Arrays.equals(arr, posicionJugador) || Arrays.equals(arr, posicionSalida) || Utils.contains(posicionesEnemigos, arr)
-                    || Arrays.equals(arr, posicionBomba) || Utils.contains(posicionesVidas, arr));
-            posicionesEnemigos[i][0] = arr[0];
-            posicionesEnemigos[i][1] = arr[1];
-        }
-       //Arrays.sort(posicionEnemigo, (a, b) -> a[0] - b[0]);
-    }
 
-    void insertPosiciones(int[] posJugador){
+    void insertPosiciones(){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 6; j++){
                 tablero[i][j] = 'L';
                 int[] arr = {i, j};
-                if (Arrays.equals(posJugador, arr)){
+                if (Arrays.equals(posicionJugador, arr)){
                     tablero[i][j] = this.letraJugador;
                 }
                 if (Arrays.equals(posicionSalida, arr)){
@@ -107,11 +115,11 @@ public class Tablero {
         this.posicionJugador = posicionJugador;
     }
 
-    public static int[][] getPosicionEnemigo() {
-        return posicionesEnemigos;
+    public int[][] getPosicionEnemigo() {
+        return this.posicionesEnemigos;
     }
 
-    public static void setPosicionEnemigo(int[][] posicionEnemigo) {
-        Tablero.posicionesEnemigos = posicionEnemigo;
+    public void setPosicionEnemigo(int[][] posicionEnemigo) {
+        this.posicionesEnemigos = posicionEnemigo;
     }
 }

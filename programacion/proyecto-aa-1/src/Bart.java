@@ -5,11 +5,12 @@ import java.util.Arrays;
 import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Bart extends Jugador {
+    Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
     public Bart(){
         this.nombre = "Bart";
         this.enemigo = "Krusty";
         this.vidas = 3;
-        this.tablero = setTablero();
+        this.tablero = initTablero();
     }
 
     @Override
@@ -20,10 +21,9 @@ public class Bart extends Jugador {
             fila1 = fila2.replaceAll("[\\[\\],]", " ");
 
             fila = fila1.toCharArray();
-            Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
             for (int i = 0; i < fila.length; i++) {
                 if (fila[i] == this.nombre.charAt(0)) {
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_CYAN_TEXT(), bgColor));
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_YELLOW_TEXT(), bgColor));
                 } else {
                     System.out.print(colorize(String.valueOf(fila[i]), Attribute.WHITE_TEXT(), bgColor));
                 }
