@@ -114,13 +114,15 @@ public class Jugador {
             tablero.setPosicionJugador(nuevaPosicion);
             tablero.insertPosiciones(nuevaPosicion);
         }
-        printTableroJugador();
+        printTableroReal();
+        //printTableroJugador();
     }
 
     void evaluarMovimiento(int[] nuevaPos){
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == this.enemigo.charAt(0)){
            this.vidas = decreaseVidas();
            System.out.println(colorize("Acabas de caer en la posicion de un enemigo. " + this.vidas + " vidas restantes.", Attribute.RED_TEXT()));
+           tablero.killPosicionesEnemigos(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
             this.vidas = increaseVidas();
@@ -155,7 +157,8 @@ public class Jugador {
     }
 
     void turnoJugador(){
-        printTableroJugador();
+        //printTableroJugador();
+        printTableroReal();
         Movimiento movimiento = pedirMovimiento();
         registrarMovimiento(movimiento);
         int[] newpos = this.tablero.getPosicionJugador();

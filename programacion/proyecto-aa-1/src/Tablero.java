@@ -117,11 +117,24 @@ public class Tablero {
         this.posicionJugador = posicionJugador;
     }
 
-    public int[][] getPosicionEnemigo() {
-        return this.posicionesEnemigos;
+
+    public void killPosicionesEnemigos(int[] posicion){
+        int[] arr = {-1, -1};
+        for (int[] fila : this.posicionesEnemigos){
+            if (Arrays.equals(fila, posicion)){
+                fila = arr;
+                NUMERO_ENEMIGOS--;
+                System.out.println("Enemigos restantes: " + NUMERO_ENEMIGOS);
+            }
+        }
     }
 
-    public void setPosicionEnemigo(int[][] posicionEnemigo) {
-        this.posicionesEnemigos = posicionEnemigo;
+    public void setPosicionesEnemigos(int[] posicion){
+       int[][] copiaPosiciones = new int[NUMERO_ENEMIGOS - 1][2];
+       for (int i = 0; i < NUMERO_ENEMIGOS - 1; i++){
+           if (!Arrays.equals(this.posicionesEnemigos[i], posicion)){
+               copiaPosiciones[i] = this.posicionesEnemigos[i];
+           }
+       }
     }
 }
