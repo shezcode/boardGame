@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -109,10 +110,6 @@ public class Tablero {
         }
     }
 
-    void moverJugador(){
-
-    }
-
     public int[] getPosicionJugador() {
         return this.posicionJugador;
     }
@@ -158,20 +155,31 @@ public class Tablero {
         }
     }
 
-    int[][] generar2PosicionesDistancia(int[] pos){
-        int[][] resultado = new int[9][2];
-        int[] posicionTemp = new int[2];
-        int index = 0;
-        for(int i = -2; i <= 2; i++){
-           for (int j = -2; j <= 2; j++){
-               if (i != 0 || j != 0) {
-                   resultado[index][0] = pos[0] + i;
-                   resultado[index][1] = pos[1] + j;
-                   index++;
-               }
-           }
-        }
-        return resultado;
-    }
+    public int[][] generar2PosicionesDistancia(int[] position) {
+        int numRows = 6;
+        int numCols = 6;
 
+        ArrayList<int[]> result = new ArrayList<>();
+
+        for (int i = -2; i <= 2; i++) {
+            for (int j = -2; j <= 2; j++) {
+                int newRow = position[0] + i;
+                int newCol = position[1] + j;
+
+                // Check for overflow issues and ensure the position is within the valid range
+                if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols) {
+                    int[] newPosition = {newRow, newCol};
+                    result.add(newPosition);
+                }
+            }
+        }
+
+        // Convert the ArrayList to int[][]
+        int[][] resultArray = new int[result.size()][2];
+        for (int i = 0; i < result.size(); i++) {
+            resultArray[i] = result.get(i);
+        }
+
+        return resultArray;
+    }
 }

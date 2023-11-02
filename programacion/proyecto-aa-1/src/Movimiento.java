@@ -7,20 +7,4 @@ public class Movimiento {
         this.direccion = direccion;
     }
 
-
-    public int getCasillas() {
-        return casillas;
-    }
-
-    public void setCasillas(int casillas) {
-        this.casillas = casillas;
-    }
-
-    public char getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(char direccion) {
-        this.direccion = direccion;
-    }
 }

@@ -13,15 +13,5 @@ public class Main {
             if (jugador1.hasWon || !jugador1.alive) break;
             jugador2.turnoJugador();
         } while ((jugador1.alive && !jugador1.hasWon) && ((jugador2.alive && !jugador2.hasWon)));
-
-        if (jugador1.hasWon){
-            System.out.println("DALE PAAAAAA");
-            return;
-        }
-
-        if (!jugador1.isAlive()){
-            System.out.println("xd pelele");
-        }
-
     }
 }

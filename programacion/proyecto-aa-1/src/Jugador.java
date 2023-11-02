@@ -18,9 +18,6 @@ public class Jugador {
 
     boolean hasWon = false;
 
-    int getVidas() {
-        return vidas;
-    }
 
     int increaseVidas(){
         return vidas + 1;
@@ -124,11 +121,15 @@ public class Jugador {
         if (movimiento.direccion == 'b'){
             int[] pos = tablero.getPosicionJugador();
             int[][] posicion2distancia = tablero.generar2PosicionesDistancia(pos);
-            for (int[] fila : posicion2distancia){
-                if (Utils.contains(tablero.posicionesEnemigos, fila)){
+            System.out.println(Arrays.deepToString(posicion2distancia));
+            System.out.println(Arrays.deepToString(this.tablero.posicionesEnemigos));
+            for (int[] fila : this.tablero.posicionesEnemigos){
+                if (Utils.contains(posicion2distancia, fila)){
                     tablero.killPosicionesEnemigos(fila);
                 }
             }
+            setHasBomb(false);
+            tablero.insertPosiciones(pos, this.tablero.posicionesEnemigos);
         }
     }
 
@@ -162,10 +163,7 @@ public class Jugador {
             alive = false;
             return;
         }
-        if (hasBomb){
-            System.out.println(this.nombre + " acaba de recibir la bomba");
-            return;
-        }
+
         System.out.println(colorize("Partida continua", Attribute.BRIGHT_CYAN_TEXT()));
         System.out.println();
         System.out.println(colorize("------------------------------------", Attribute.BRIGHT_GREEN_TEXT()));
@@ -173,38 +171,19 @@ public class Jugador {
     }
 
     void turnoJugador(){
-        //printTableroJugador();
-        printTableroReal();
+        printTableroJugador();
+        //printTableroReal();
         Movimiento movimiento = pedirMovimiento();
         registrarMovimiento(movimiento);
-        int[] newpos = this.tablero.getPosicionJugador();
-        //System.out.println(Arrays.toString(newpos));
-        printTableroReal();
+        this.tablero.getPosicionJugador();
+
+        //printTableroReal();
+        printTableroJugador();
         evaluarPartida();
-    }
-
-    public String getEnemigo() {
-        return this.enemigo;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public Tablero getTablero(){
-        return this.tablero;
-    }
-
-    public boolean isHasBomb() {
-        return hasBomb;
     }
 
     public void setHasBomb(boolean hasBomb) {
         this.hasBomb = hasBomb;
-    }
-
-    public boolean isHasWon() {
-        return hasWon;
     }
 
     public void setHasWon(boolean hasWon) {
