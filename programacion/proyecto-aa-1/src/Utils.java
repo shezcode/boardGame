@@ -25,7 +25,7 @@ public class Utils {
        }
 
        char direccion = input.charAt(1);
-       if (direccion != 'w' && direccion != 'a' && direccion != 's' && direccion != 'd'){
+       if (direccion != 'w' && direccion != 'a' && direccion != 's' && direccion != 'd' && direccion != 'b'){
            return false;
        }
 

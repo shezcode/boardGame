@@ -1,7 +1,6 @@
 import java.util.Arrays;
 
 public class Main {
-    int turno = 0;
     public static void main(String[] args) {
         Homer jugador1 = new Homer();
         jugador1.initTablero();
@@ -25,6 +24,4 @@ public class Main {
         }
 
     }
-
-
 }

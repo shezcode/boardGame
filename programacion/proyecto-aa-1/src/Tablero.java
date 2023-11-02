@@ -17,7 +17,6 @@ public class Tablero {
 
     int[][] posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
 
-
     Random generator = new Random();
 
     public Tablero(char letraJugador, char letraEnemigo){
@@ -28,7 +27,7 @@ public class Tablero {
 
     // Generacion de posiciones, orden especefico para evitar problemas en la comprobacion. Se han de llamar los metodos en este mismo orden.
 
-    void generarPosicionEnemigos(){
+    int[][] generarPosicionEnemigos(){
         int[] arr = new int[2];
         for(int i = 0; i < NUMERO_ENEMIGOS; i++){
             do {
@@ -39,6 +38,7 @@ public class Tablero {
             this.posicionesEnemigos[i][1] = arr[1];
         }
         //Arrays.sort(posicionEnemigo, (a, b) -> a[0] - b[0]);
+        return this.posicionesEnemigos;
     }
     int[] generarPosicionJugador(){
         int[] arr = new int[2];
@@ -84,7 +84,7 @@ public class Tablero {
     }
 
 
-    void insertPosiciones(int[] posJugador){
+    void insertPosiciones(int[] posJugador, int[][] posEnemigos){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 6; j++){
                 tablero[i][j] = 'L';
@@ -99,7 +99,7 @@ public class Tablero {
                 if (Arrays.equals(posicionBomba, arr)){
                     tablero[i][j] = 'X';
                 }
-                if (Utils.contains(posicionesEnemigos, arr)){
+                if (Utils.contains(posEnemigos, arr)){
                     tablero[i][j] = this.letraEnemigo;
                 }
                 if (Utils.contains(posicionesVidas, arr)){
@@ -107,6 +107,10 @@ public class Tablero {
                 }
             }
         }
+    }
+
+    void moverJugador(){
+
     }
 
     public int[] getPosicionJugador() {
@@ -119,22 +123,55 @@ public class Tablero {
 
 
     public void killPosicionesEnemigos(int[] posicion){
-        int[] arr = {-1, -1};
-        for (int[] fila : this.posicionesEnemigos){
-            if (Arrays.equals(fila, posicion)){
-                fila = arr;
-                NUMERO_ENEMIGOS--;
-                System.out.println("Enemigos restantes: " + NUMERO_ENEMIGOS);
+        int[][] nuevaPosicionEnemigos = new int[NUMERO_ENEMIGOS - 1][2];
+        int index = 0;
+        for (int i =0; i < NUMERO_ENEMIGOS; i++){
+            if (Arrays.equals(this.posicionesEnemigos[i], posicion)){
+                continue;
             }
+            nuevaPosicionEnemigos[index] = this.posicionesEnemigos[i];
+            index++;
+        }
+        NUMERO_ENEMIGOS--;
+        //System.out.println(Arrays.deepToString(this.posicionesEnemigos));
+        //System.out.println(Arrays.deepToString(nuevaPosicionEnemigos));
+        this.posicionesEnemigos = nuevaPosicionEnemigos;
+        //System.out.println(Arrays.deepToString(this.posicionesEnemigos));
+    }
+
+    void killVida(int[] posicion){
+        int[][] nuevaPosicionVida = new int[posicionesVidas.length - 1][2];
+        int index = 0;
+        for (int i = 0; i < posicionesVidas.length; i++){
+            if (Arrays.equals(posicion, this.posicionesVidas[i])){
+                continue;
+            }
+            nuevaPosicionVida[index] = this.posicionesVidas[i];
+            index++;
+        }
+        this.posicionesVidas = nuevaPosicionVida;
+    }
+
+    void killBomba(int[] posicion){
+        if (Arrays.equals(posicionBomba, posicion)){
+            this.posicionBomba = null;
         }
     }
 
-    public void setPosicionesEnemigos(int[] posicion){
-       int[][] copiaPosiciones = new int[NUMERO_ENEMIGOS - 1][2];
-       for (int i = 0; i < NUMERO_ENEMIGOS - 1; i++){
-           if (!Arrays.equals(this.posicionesEnemigos[i], posicion)){
-               copiaPosiciones[i] = this.posicionesEnemigos[i];
+    int[][] generar2PosicionesDistancia(int[] pos){
+        int[][] resultado = new int[9][2];
+        int[] posicionTemp = new int[2];
+        int index = 0;
+        for(int i = -2; i <= 2; i++){
+           for (int j = -2; j <= 2; j++){
+               if (i != 0 || j != 0) {
+                   resultado[index][0] = pos[0] + i;
+                   resultado[index][1] = pos[1] + j;
+                   index++;
+               }
            }
-       }
+        }
+        return resultado;
     }
+
 }

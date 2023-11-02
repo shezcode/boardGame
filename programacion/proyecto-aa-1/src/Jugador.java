@@ -36,12 +36,12 @@ public class Jugador {
 
     public Tablero initTablero(){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0));
-        tableroJugador.generarPosicionEnemigos();
-        int[] pos = tableroJugador.generarPosicionJugador();
+        int[][] posEnemigos = tableroJugador.generarPosicionEnemigos();
+        int[] posJugador = tableroJugador.generarPosicionJugador();
         tableroJugador.generarCasillaSalida();
         tableroJugador.generarCasillaBomba();
         tableroJugador.generarCasillasVidas();
-        tableroJugador.insertPosiciones(pos);
+        tableroJugador.insertPosiciones(posJugador, posEnemigos);
         return tableroJugador;
     }
 
@@ -66,6 +66,9 @@ public class Jugador {
         boolean isValid;
         String input;
         do {
+            if (hasBomb){
+                System.out.println("Tienes una bomba en el inventario (pulsa 1b para detonar)");
+            }
             System.out.print(colorize( this.nombre + " introduce tu movimiento: ", Attribute.BRIGHT_CYAN_TEXT()));
             input = scanner.nextLine().toLowerCase();
             isValid = Utils.validarInput(input);
@@ -82,7 +85,8 @@ public class Jugador {
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
-            tablero.insertPosiciones(nuevaPosicion);
+            evaluarMovimiento(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion, this.tablero.posicionesEnemigos);
         }
         if (movimiento.direccion == 'd'){
             int i = tablero.getPosicionJugador()[0];
@@ -92,7 +96,8 @@ public class Jugador {
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
-            tablero.insertPosiciones(nuevaPosicion);
+            evaluarMovimiento(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion, this.tablero.posicionesEnemigos);
         }
         if (movimiento.direccion == 'w'){
             int i = tablero.getPosicionJugador()[0] - movimiento.casillas;
@@ -102,7 +107,8 @@ public class Jugador {
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
-            tablero.insertPosiciones(nuevaPosicion);
+            evaluarMovimiento(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion, this.tablero.posicionesEnemigos);
         }
         if (movimiento.direccion == 's'){
             int i = tablero.getPosicionJugador()[0] + movimiento.casillas;
@@ -112,10 +118,18 @@ public class Jugador {
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
-            tablero.insertPosiciones(nuevaPosicion);
+            evaluarMovimiento(nuevaPosicion);
+            tablero.insertPosiciones(nuevaPosicion, this.tablero.posicionesEnemigos);
         }
-        printTableroReal();
-        //printTableroJugador();
+        if (movimiento.direccion == 'b'){
+            int[] pos = tablero.getPosicionJugador();
+            int[][] posicion2distancia = tablero.generar2PosicionesDistancia(pos);
+            for (int[] fila : posicion2distancia){
+                if (Utils.contains(tablero.posicionesEnemigos, fila)){
+                    tablero.killPosicionesEnemigos(fila);
+                }
+            }
+        }
     }
 
     void evaluarMovimiento(int[] nuevaPos){
@@ -127,9 +141,11 @@ public class Jugador {
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
             this.vidas = increaseVidas();
             System.out.println(colorize("Acabas de caer en una vida extra. " + this.vidas + " restantes.", Attribute.BRIGHT_GREEN_TEXT()));
+            tablero.killVida(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'X'){
             setHasBomb(true);
+            tablero.killBomba(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'S'){
             setHasWon(true);
@@ -163,7 +179,7 @@ public class Jugador {
         registrarMovimiento(movimiento);
         int[] newpos = this.tablero.getPosicionJugador();
         //System.out.println(Arrays.toString(newpos));
-        evaluarMovimiento(newpos);
+        printTableroReal();
         evaluarPartida();
     }
 
