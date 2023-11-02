@@ -3,6 +3,8 @@ public class Main {
     public static void main(String[] args) {
         Juego juego = new Juego();
         juego.intro();
+        int dimensionTablero = juego.pedirDimensionTablero();
+        int numeroEnemigos = juego.pedirDificultad();
         enumJugador nombre1 = juego.pedirDatos(1);
 
         Jugador jugador1 = switch (nombre1) {
@@ -12,7 +14,7 @@ public class Main {
             case SHREK -> new Shrek();
         };
 
-        jugador1.initTablero();
+        jugador1.tablero = jugador1.initTablero(dimensionTablero, numeroEnemigos);
 
         enumJugador nombre2 = juego.pedirDatos(2);
         Jugador jugador2 = switch(nombre2) {
@@ -22,7 +24,7 @@ public class Main {
             case SHREK -> new Shrek();
         };
 
-        jugador2.initTablero();
+         jugador2.tablero = jugador2.initTablero(dimensionTablero, numeroEnemigos);
 
         do {
             jugador1.turnoJugador();

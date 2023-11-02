@@ -11,7 +11,6 @@ public class Peter extends Jugador {
         this.nombre = "Peter";
         this.enemigo = "Meg";
         this.vidas = 3;
-        this.tablero = initTablero();
     }
 
     @Override

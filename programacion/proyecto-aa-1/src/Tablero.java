@@ -4,11 +4,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tablero {
-    char[][] tablero = new char[6][6];
+    public int dimension;
+    public char[][] tablero;
     char letraJugador;
     char letraEnemigo;
 
-    int NUMERO_ENEMIGOS = 8;
+    public int NUMERO_ENEMIGOS;
     int[] posicionJugador = new int[2];
     int[] posicionSalida = new int[2];
 
@@ -20,17 +21,21 @@ public class Tablero {
 
     Random generator = new Random();
 
-    public Tablero(char letraJugador, char letraEnemigo){
+    public Tablero(char letraJugador, char letraEnemigo, int dimension, int numEnemigos){
         this.letraJugador = letraJugador;
         this.letraEnemigo = letraEnemigo;
+        this.dimension = dimension;
+        this.NUMERO_ENEMIGOS = numEnemigos;
+        this.tablero = new char[dimension][dimension];
    }
 
 
     // Generacion de posiciones, orden especefico para evitar problemas en la comprobacion. Se han de llamar los metodos en este mismo orden.
 
     int[][] generarPosicionEnemigos(){
+        this.posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
         int[] arr = new int[2];
-        for(int i = 0; i < NUMERO_ENEMIGOS; i++){
+        for(int i = 0; i < this.NUMERO_ENEMIGOS; i++){
             do {
                 arr[0] = generator.nextInt(6);
                 arr[1] = generator.nextInt(6);
@@ -86,25 +91,22 @@ public class Tablero {
 
 
     void insertPosiciones(int[] posJugador, int[][] posEnemigos){
-        for (int i = 0; i < 6; i++){
-            for (int j = 0; j < 6; j++){
-                tablero[i][j] = 'L';
+        for (int i = 0; i < this.dimension; i++){
+            for (int j = 0; j < this.dimension; j++){
                 int[] arr = {i, j};
-                if (Arrays.equals(posJugador, arr)){
+                if (Arrays.equals(posJugador, arr)) {
                     tablero[i][j] = this.letraJugador;
-                }
-                if (Arrays.equals(posicionSalida, arr)){
+                } else if (Arrays.equals(posicionSalida, arr)){
                     tablero[i][j] = 'S';
-                }
-                // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores.Bart.
-                if (Arrays.equals(posicionBomba, arr)){
+                } else if (Arrays.equals(posicionBomba, arr)){
+                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores.Bart.
                     tablero[i][j] = 'X';
-                }
-                if (Utils.contains(posEnemigos, arr)){
+                } else if (Utils.contains(posEnemigos, arr)){
                     tablero[i][j] = this.letraEnemigo;
-                }
-                if (Utils.contains(posicionesVidas, arr)){
+                } else if (Utils.contains(posicionesVidas, arr)){
                     tablero[i][j] = 'V';
+                } else {
+                    tablero[i][j] = 'L';
                 }
             }
         }

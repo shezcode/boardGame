@@ -11,7 +11,6 @@ public class Homer extends Jugador {
       this.nombre = "Homer";
       this.enemigo = "Flanders";
       this.vidas = 3;
-      this.tablero = initTablero();
    }
 
    @Override

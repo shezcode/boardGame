@@ -11,7 +11,6 @@ public class Bart extends Jugador {
         this.nombre = "Bart";
         this.enemigo = "Krusty";
         this.vidas = 3;
-        this.tablero = initTablero();
     }
 
     @Override

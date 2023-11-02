@@ -11,7 +11,6 @@ public class Shrek extends Jugador {
         this.nombre = "Shrek";
         this.enemigo = "Principe";
         this.vidas = 3;
-        this.tablero = initTablero();
     }
 
     @Override
