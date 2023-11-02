@@ -1,11 +1,27 @@
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Homer jugador1 = new Homer();
+        Juego juego = new Juego();
+        juego.intro();
+        enumJugador nombre1 = juego.pedirDatos(1);
+
+        Jugador jugador1 = switch (nombre1) {
+            case HOMER -> new Homer();
+            case BART -> new Bart();
+            case PETER -> new Peter();
+            case SHREK -> new Shrek();
+        };
+
         jugador1.initTablero();
 
-        Bart jugador2 = new Bart();
+        enumJugador nombre2 = juego.pedirDatos(2);
+        Jugador jugador2 = switch(nombre2) {
+            case HOMER -> new Homer();
+            case BART -> new Bart();
+            case PETER -> new Peter();
+            case SHREK -> new Shrek();
+        };
+
         jugador2.initTablero();
 
         do {

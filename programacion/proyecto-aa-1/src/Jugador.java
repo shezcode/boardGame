@@ -1,8 +1,8 @@
-import com.diogonunes.jcolor.Attribute;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
+import com.diogonunes.jcolor.Attribute;
 import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
@@ -11,8 +11,6 @@ public class Jugador {
     String nombre;
     String enemigo;
     Tablero tablero;
-
-    String regexJugador;
 
     boolean alive = true;
 
@@ -56,13 +54,6 @@ public class Jugador {
         System.out.println();
     }
 
-    static char[] pedirDatos(int jugador){
-        System.out.printf("Jugador %d, Introduce tu nombre: \n", jugador);
-        char letraJugador = scanner.nextLine().charAt(0);
-        System.out.printf("Jugador %d, Introduce el nombre de tu enemigo: \n", jugador);
-        char letraEnemigo = scanner.nextLine().charAt(0);
-        return new char[]{letraJugador, letraEnemigo};
-    }
     public Movimiento pedirMovimiento(){
         boolean isValid;
         String input;
@@ -129,8 +120,8 @@ public class Jugador {
             }
             int[] pos = tablero.getPosicionJugador();
             int[][] posicion2distancia = tablero.generar2PosicionesDistancia(pos);
-            System.out.println(Arrays.deepToString(posicion2distancia));
-            System.out.println(Arrays.deepToString(this.tablero.posicionesEnemigos));
+            //System.out.println(Arrays.deepToString(posicion2distancia));
+            //System.out.println(Arrays.deepToString(this.tablero.posicionesEnemigos));
             for (int[] fila : this.tablero.posicionesEnemigos){
                 if (Utils.contains(posicion2distancia, fila)){
                     tablero.killPosicionesEnemigos(fila);

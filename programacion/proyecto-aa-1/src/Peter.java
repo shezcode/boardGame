@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 
-public class Bart extends Jugador {
+public class Peter extends Jugador {
     Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
 
-    public Bart(){
-        this.nombre = "Bart";
-        this.enemigo = "Krusty";
+    public Peter(){
+        this.nombre = "Peter";
+        this.enemigo = "Meg";
         this.vidas = 3;
         this.tablero = initTablero();
     }
@@ -17,7 +17,7 @@ public class Bart extends Jugador {
     @Override
     void printTableroJugador(boolean trucos) {
         for (char[] fila : this.tablero.tablero) {
-            String regex = trucos ? "[VX]" : "[KVX]";
+            String regex = trucos ? "[VX]" : "[MVX]";
             String fila1 = Arrays.toString(fila);
             String fila2 = fila1.replaceAll(regex, "L");
             fila1 = fila2.replaceAll("[\\[\\],]", " ");
@@ -25,7 +25,7 @@ public class Bart extends Jugador {
             fila = fila1.toCharArray();
             for (int i = 0; i < fila.length; i++) {
                 if (fila[i] == this.nombre.charAt(0)) {
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_YELLOW_TEXT(), bgColor));
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_BLUE_TEXT(), bgColor));
                 } else if (fila[i] == this.enemigo.charAt(0)){
                     System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_RED_TEXT(), bgColor));
                 } else if (fila[i] == 'S'){
@@ -38,4 +38,5 @@ public class Bart extends Jugador {
         }
         System.out.println();
     }
+
 }

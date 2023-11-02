@@ -96,7 +96,7 @@ public class Tablero {
                 if (Arrays.equals(posicionSalida, arr)){
                     tablero[i][j] = 'S';
                 }
-                // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Bart.
+                // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores.Bart.
                 if (Arrays.equals(posicionBomba, arr)){
                     tablero[i][j] = 'X';
                 }
@@ -179,7 +179,6 @@ public class Tablero {
         for (int i = 0; i < result.size(); i++) {
             resultArray[i] = result.get(i);
         }
-
         return resultArray;
     }
 }
