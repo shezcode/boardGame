@@ -6,6 +6,7 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Bart extends Jugador {
     Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
+
     public Bart(){
         this.nombre = "Bart";
         this.enemigo = "Krusty";
@@ -14,10 +15,11 @@ public class Bart extends Jugador {
     }
 
     @Override
-    void printTableroJugador() {
+    void printTableroJugador(boolean trucos) {
         for (char[] fila : this.tablero.tablero) {
+            String regex = trucos ? "[SVX]" : "[KSVX]";
             String fila1 = Arrays.toString(fila);
-            String fila2 = fila1.replaceAll("[KSVX]", "L");
+            String fila2 = fila1.replaceAll(regex, "L");
             fila1 = fila2.replaceAll("[\\[\\],]", " ");
 
             fila = fila1.toCharArray();
@@ -32,5 +34,4 @@ public class Bart extends Jugador {
         }
         System.out.println();
     }
-
 }

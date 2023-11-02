@@ -12,11 +12,15 @@ public class Jugador {
     String enemigo;
     Tablero tablero;
 
+    String regexJugador;
+
     boolean alive = true;
 
     boolean hasBomb = false;
 
     boolean hasWon = false;
+
+    boolean truco;
 
 
     int increaseVidas(){
@@ -43,7 +47,7 @@ public class Jugador {
     }
 
 
-    void printTableroJugador(){}
+    void printTableroJugador(boolean trucos){}
 
     void printTableroReal(){
         for (char[] fila : this.tablero.tablero){
@@ -119,6 +123,10 @@ public class Jugador {
             tablero.insertPosiciones(nuevaPosicion, this.tablero.posicionesEnemigos);
         }
         if (movimiento.direccion == 'b'){
+            if (!hasBomb){
+                System.out.println("No tienes la bomba! :(");
+                return;
+            }
             int[] pos = tablero.getPosicionJugador();
             int[][] posicion2distancia = tablero.generar2PosicionesDistancia(pos);
             System.out.println(Arrays.deepToString(posicion2distancia));
@@ -130,6 +138,10 @@ public class Jugador {
             }
             setHasBomb(false);
             tablero.insertPosiciones(pos, this.tablero.posicionesEnemigos);
+        }
+        if (movimiento.direccion == 't'){
+            setTruco(true);
+            decreaseVidas();
         }
     }
 
@@ -171,14 +183,15 @@ public class Jugador {
     }
 
     void turnoJugador(){
-        printTableroJugador();
+        printTableroJugador(isTruco());
+        setTruco(false);
         //printTableroReal();
         Movimiento movimiento = pedirMovimiento();
         registrarMovimiento(movimiento);
         this.tablero.getPosicionJugador();
 
         //printTableroReal();
-        printTableroJugador();
+        printTableroJugador(isTruco());
         evaluarPartida();
     }
 
@@ -188,5 +201,13 @@ public class Jugador {
 
     public void setHasWon(boolean hasWon) {
         this.hasWon = hasWon;
+    }
+
+    public boolean isTruco() {
+        return truco;
+    }
+
+    public void setTruco(boolean truco) {
+        this.truco = truco;
     }
 }

@@ -6,6 +6,7 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Homer extends Jugador {
    Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
+
    public Homer(){
       this.nombre = "Homer";
       this.enemigo = "Flanders";
@@ -14,10 +15,11 @@ public class Homer extends Jugador {
    }
 
    @Override
-   void printTableroJugador() {
+   void printTableroJugador(boolean trucos) {
       for (char[] fila : this.tablero.tablero) {
+         String regex = trucos ? "[SVX]" : "[FSVX]";
          String fila1 = Arrays.toString(fila);
-         String fila2 = fila1.replaceAll("[FSVX]", "L");
+         String fila2 = fila1.replaceAll(regex, "L");
          fila1 = fila2.replaceAll("[\\[\\],]", " ");
 
          fila = fila1.toCharArray();
