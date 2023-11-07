@@ -99,7 +99,7 @@ public class Tablero {
                 } else if (Arrays.equals(posicionSalida, arr)){
                     tablero[i][j] = 'S';
                 } else if (Arrays.equals(posicionBomba, arr)){
-                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores.Bart.
+                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. Bart.
                     tablero[i][j] = 'X';
                 } else if (Utils.contains(posEnemigos, arr)){
                     tablero[i][j] = this.letraEnemigo;
@@ -132,20 +132,17 @@ public class Tablero {
             index++;
         }
         NUMERO_ENEMIGOS--;
-        //System.out.println(Arrays.deepToString(this.posicionesEnemigos));
-        //System.out.println(Arrays.deepToString(nuevaPosicionEnemigos));
         this.posicionesEnemigos = nuevaPosicionEnemigos;
-        //System.out.println(Arrays.deepToString(this.posicionesEnemigos));
     }
 
     void killVida(int[] posicion){
         int[][] nuevaPosicionVida = new int[posicionesVidas.length - 1][2];
         int index = 0;
-        for (int i = 0; i < posicionesVidas.length; i++){
-            if (Arrays.equals(posicion, this.posicionesVidas[i])){
+        for (int[] posicionesVida : posicionesVidas) {
+            if (Arrays.equals(posicion, posicionesVida)) {
                 continue;
             }
-            nuevaPosicionVida[index] = this.posicionesVidas[i];
+            nuevaPosicionVida[index] = posicionesVida;
             index++;
         }
         this.posicionesVidas = nuevaPosicionVida;

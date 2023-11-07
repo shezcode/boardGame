@@ -1,5 +1,3 @@
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 import com.diogonunes.jcolor.Attribute;
@@ -47,12 +45,13 @@ public class Jugador {
 
     void printTableroJugador(boolean trucos){}
 
-    void printTableroReal(){
-        for (char[] fila : this.tablero.tablero){
-            System.out.println(Arrays.toString(fila));
-        }
-        System.out.println();
-    }
+    // Only useful for debugging reasons.
+    //void printTableroReal(){
+    //    for (char[] fila : this.tablero.tablero){
+    //        System.out.println(Arrays.toString(fila));
+    //    }
+    //    System.out.println();
+    //}
 
     public Movimiento pedirMovimiento(){
         boolean isValid;
@@ -120,8 +119,6 @@ public class Jugador {
             }
             int[] pos = tablero.getPosicionJugador();
             int[][] posicion2distancia = tablero.generar2PosicionesDistancia(pos);
-            //System.out.println(Arrays.deepToString(posicion2distancia));
-            //System.out.println(Arrays.deepToString(this.tablero.posicionesEnemigos));
             for (int[] fila : this.tablero.posicionesEnemigos){
                 if (Utils.contains(posicion2distancia, fila)){
                     tablero.killPosicionesEnemigos(fila);

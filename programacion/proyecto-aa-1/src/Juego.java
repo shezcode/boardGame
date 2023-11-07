@@ -2,7 +2,6 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 import com.diogonunes.jcolor.Attribute;
 
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Juego {
@@ -27,7 +26,7 @@ public class Juego {
 
     int pedirDificultad(){
         System.out.println("Elige la dificultad: Facil - Media - Dificil [F, M, D]");
-        String input = null;
+        String input;
         do {
             System.out.print("Tu dificultad: ");
             input = scanner.nextLine();
@@ -35,9 +34,9 @@ public class Juego {
 
         return switch (input.toUpperCase().charAt(0)){
             case 'F' -> 8;
-            case 'M' -> 10;
-            case 'D' -> 12;
-            default -> 6;
+            case 'M' -> 12;
+            case 'D' -> 16;
+            default -> 10;
         };
     }
     enumJugador pedirDatos(int jugador){
