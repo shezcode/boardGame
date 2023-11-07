@@ -1,24 +1,18 @@
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Tablero {
-    public int dimension;
-    public char[][] tablero;
-    char letraJugador;
-    char letraEnemigo;
-
-    public int NUMERO_ENEMIGOS;
-    int[] posicionJugador = new int[2];
-    int[] posicionSalida = new int[2];
-
-    int[] posicionBomba = new int[2];
-
-    int[][] posicionesVidas = new int[2][2];
-
+    private int dimension;
+    char[][] tablero;
+    private char letraJugador;
+    private char letraEnemigo;
+    private int NUMERO_ENEMIGOS;
+    private int[] posicionJugador = new int[2];
+    private int[] posicionSalida = new int[2];
+    private int[] posicionBomba = new int[2];
+    private int[][] posicionesVidas = new int[2][2];
     int[][] posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
-
     Random generator = new Random();
 
     public Tablero(char letraJugador, char letraEnemigo, int dimension, int numEnemigos){
@@ -28,7 +22,6 @@ public class Tablero {
         this.NUMERO_ENEMIGOS = numEnemigos;
         this.tablero = new char[dimension][dimension];
    }
-
 
     // Generacion de posiciones, orden especefico para evitar problemas en la comprobacion. Se han de llamar los metodos en este mismo orden.
 
@@ -46,6 +39,7 @@ public class Tablero {
         //Arrays.sort(posicionEnemigo, (a, b) -> a[0] - b[0]);
         return this.posicionesEnemigos;
     }
+
     int[] generarPosicionJugador(){
         int[] arr = new int[2];
         do {
@@ -112,16 +106,15 @@ public class Tablero {
         }
     }
 
-    public int[] getPosicionJugador() {
+    int[] getPosicionJugador() {
         return this.posicionJugador;
     }
 
-    public void setPosicionJugador(int[] posicionJugador) {
+    void setPosicionJugador(int[] posicionJugador) {
         this.posicionJugador = posicionJugador;
     }
 
-
-    public void killPosicionesEnemigos(int[] posicion){
+    void killPosicionesEnemigos(int[] posicion){
         int[][] nuevaPosicionEnemigos = new int[NUMERO_ENEMIGOS - 1][2];
         int index = 0;
         for (int i =0; i < NUMERO_ENEMIGOS; i++){
@@ -154,7 +147,7 @@ public class Tablero {
         }
     }
 
-    public int[][] generar2PosicionesDistancia(int[] position) {
+    int[][] generar2PosicionesDistancia(int[] position) {
         int numRows = 6;
         int numCols = 6;
 
@@ -180,4 +173,5 @@ public class Tablero {
         }
         return resultArray;
     }
+
 }

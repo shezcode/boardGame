@@ -5,29 +5,21 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
-    int vidas = 3;
+    private int vidas = 3;
     String nombre;
     String enemigo;
     Tablero tablero;
-
     boolean alive = true;
-
-    boolean hasBomb = false;
-
+    private boolean hasBomb = false;
     boolean hasWon = false;
-
-    boolean truco;
-
-
-    int increaseVidas(){
+    private boolean truco;
+    private int increaseVidas(){
         return vidas + 1;
     }
-
-    int decreaseVidas(){
+    private int decreaseVidas(){
         return vidas - 1;
     }
-
-    boolean isAlive(){
+    private boolean isAlive(){
         return vidas > 0;
     }
 
