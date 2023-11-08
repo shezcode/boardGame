@@ -5,7 +5,7 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
-    private int vidas = 3;
+    int vidas = 3;
     String nombre;
     String enemigo;
     Tablero tablero;
