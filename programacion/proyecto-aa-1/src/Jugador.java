@@ -13,6 +13,7 @@ public class Jugador {
     private boolean hasBomb = false;
     boolean hasWon = false;
     private boolean truco;
+    private boolean trucoUsado = false;
     private int increaseVidas(){
         return vidas + 1;
     }
@@ -120,8 +121,16 @@ public class Jugador {
             tablero.insertPosiciones(pos, this.tablero.posicionesEnemigos);
         }
         if (movimiento.direccion == 't'){
-            setTruco(true);
-            decreaseVidas();
+            if (!this.trucoUsado){
+                this.trucoUsado = true;
+                setTruco(true);
+                this.vidas = decreaseVidas();
+                System.out.println("Acabas de utilizar el truco, vidas restantes: " + this.vidas);
+            } else {
+                System.out.println("Ya has utilizado el truco. Pierdes el turno.");
+            }
+
+
         }
     }
 
