@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a16775df-4a0f-4401-a2fd-b2f92859ee03" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tablero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TableroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TableroTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TableroTest.generarPosiciones">
+  <component name="RunManager" selected="JUnit.TableroTest">
     <configuration name="TableroTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
       <option name="PACKAGE_NAME" value="" />
@@ -87,42 +86,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableroTest.tableroImplementaDimensionCorrecta" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TableroTest.generarPosicionesUnicas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TableroTest" />
-      <option name="METHOD_NAME" value="tableroImplementaDimensionCorrecta" />
+      <option name="METHOD_NAME" value="generarPosicionesUnicas" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableroTest.tableroImplementaEnemigos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TableroTest.generarPosicionesUnicasJugador" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TableroTest" />
-      <option name="METHOD_NAME" value="tableroImplementaEnemigos" />
+      <option name="METHOD_NAME" value="generarPosicionesUnicasJugador" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TableroTest.tableroImplementadoCorrecto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UtilsTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="TableroTest" />
+      <option name="METHOD_NAME" value="tableroImplementadoCorrecto" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TableroTest.generarPosiciones" />
-        <item itemvalue="JUnit.TableroTest.tableroImplementaDimensionCorrecta" />
         <item itemvalue="JUnit.TableroTest" />
-        <item itemvalue="JUnit.TableroTest.tableroImplementaEnemigos" />
-        <item itemvalue="JUnit.UtilsTest" />
+        <item itemvalue="JUnit.TableroTest.generarPosicionesUnicasJugador" />
+        <item itemvalue="JUnit.TableroTest.tableroImplementadoCorrecto" />
+        <item itemvalue="JUnit.TableroTest.generarPosicionesUnicas" />
+        <item itemvalue="JUnit.TableroTest.generarPosiciones" />
       </list>
     </recent_temporary>
   </component>
