@@ -51,23 +51,25 @@ public class Tablero {
         return posicionJugador;
     }
 
-    void generarCasillaSalida(){
+    int[] generarCasillaSalida(){
         do {
             posicionSalida[0] = generator.nextInt(6);
             posicionSalida[1] = generator.nextInt(6);
         } while (Arrays.equals(posicionSalida, posicionJugador) || Utils.contains(this.posicionesEnemigos, posicionSalida));
+        return posicionSalida;
     }
 
-    void generarCasillaBomba(){
+    int[] generarCasillaBomba(){
         do {
             posicionBomba[0] = generator.nextInt(6);
             posicionBomba[1] = generator.nextInt(6);
         } while (Arrays.equals(posicionBomba, posicionJugador)
                     || Arrays.equals(posicionBomba, posicionSalida)
                     || Utils.contains(this.posicionesEnemigos, posicionBomba));
+        return posicionBomba;
     }
 
-    void generarCasillasVidas(){
+    int[][] generarCasillasVidas(){
         int[] arr = new int[2];
         for(int i = 0; i < 2; i++){
             do {
@@ -81,6 +83,7 @@ public class Tablero {
             posicionesVidas[i][0] = arr[0];
             posicionesVidas[i][1] = arr[1];
         }
+        return posicionesVidas;
     }
 
 
@@ -172,6 +175,50 @@ public class Tablero {
             resultArray[i] = result.get(i);
         }
         return resultArray;
+    }
+
+    int getDimension() {
+        return dimension;
+    }
+
+    void setDimension(int dimension) {
+        this.dimension = dimension;
+    }
+
+    int getNUMERO_ENEMIGOS() {
+        return NUMERO_ENEMIGOS;
+    }
+
+    public char[][] getTablero() {
+        return tablero;
+    }
+
+    public char getLetraJugador() {
+        return letraJugador;
+    }
+
+    public char getLetraEnemigo() {
+        return letraEnemigo;
+    }
+
+    public int[] getPosicionSalida() {
+        return posicionSalida;
+    }
+
+    public int[] getPosicionBomba() {
+        return posicionBomba;
+    }
+
+    public int[][] getPosicionesVidas() {
+        return posicionesVidas;
+    }
+
+    public int[][] getPosicionesEnemigos() {
+        return posicionesEnemigos;
+    }
+
+    public Random getGenerator() {
+        return generator;
     }
 
 }

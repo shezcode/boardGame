@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a16775df-4a0f-4401-a2fd-b2f92859ee03" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-aa-1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-aa-1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UtilsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,17 +67,42 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UtilsTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="JUnit.TableroTest.generarPosiciones">
+    <configuration name="TableroTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TableroTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tablero" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tablero" />
+    <configuration name="TableroTest.generarPosiciones" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-aa-1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TableroTest" />
+      <option name="METHOD_NAME" value="generarPosiciones" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableroTest.tableroImplementaDimensionCorrecta" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto-aa-1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TableroTest" />
+      <option name="METHOD_NAME" value="tableroImplementaDimensionCorrecta" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableroTest.tableroImplementaEnemigos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto-aa-1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TableroTest" />
+      <option name="METHOD_NAME" value="tableroImplementaEnemigos" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,22 +116,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UtilsTest.validarInputFormatoCorrecto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto-aa-1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UtilsTest" />
-      <option name="METHOD_NAME" value="validarInputFormatoCorrecto" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TableroTest.generarPosiciones" />
+        <item itemvalue="JUnit.TableroTest.tableroImplementaDimensionCorrecta" />
+        <item itemvalue="JUnit.TableroTest" />
+        <item itemvalue="JUnit.TableroTest.tableroImplementaEnemigos" />
         <item itemvalue="JUnit.UtilsTest" />
-        <item itemvalue="JUnit.UtilsTest.validarInputFormatoCorrecto" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Tablero" />
       </list>
     </recent_temporary>
   </component>
@@ -145,5 +162,8 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/proyecto_aa_1$UtilsTest.ic" NAME="UtilsTest Coverage Results" MODIFIED="1699868248151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
