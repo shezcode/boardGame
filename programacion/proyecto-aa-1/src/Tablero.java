@@ -151,8 +151,8 @@ public class Tablero {
     }
 
     int[][] generar2PosicionesDistancia(int[] position) {
-        int numRows = 6;
-        int numCols = 6;
+        int numRows = dimension;
+        int numCols = dimension;
 
         ArrayList<int[]> result = new ArrayList<>();
 
