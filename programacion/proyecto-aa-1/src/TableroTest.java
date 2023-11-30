@@ -47,7 +47,4 @@ class TableroTest {
         Assertions.assertFalse(Utils.contains(posEnemigos, posBomba));
         Assertions.assertFalse(Arrays.deepEquals(posEnemigos, posVidas));
     }
-
-    @Test
-    void
 }

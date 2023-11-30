@@ -20,8 +20,8 @@ public class Homer extends Jugador {
          String fila1 = Arrays.toString(fila);
          String fila2 = fila1.replaceAll(regex, "L");
          fila1 = fila2.replaceAll("[\\[\\],]", " ");
-
          fila = fila1.toCharArray();
+
          for (int i = 0; i < fila.length; i++) {
             if (fila[i] == this.nombre.charAt(0)) {
                System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_CYAN_TEXT(), bgColor));
