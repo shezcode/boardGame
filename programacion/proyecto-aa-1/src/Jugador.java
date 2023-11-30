@@ -56,6 +56,7 @@ public class Jugador {
             System.out.print(colorize( this.nombre + " introduce tu movimiento: ", Attribute.BRIGHT_CYAN_TEXT()));
             input = scanner.nextLine().toLowerCase();
             isValid = Utils.validarInput(input);
+            System.out.println();
         } while (!isValid);
         return new Movimiento(Integer.parseInt(String.valueOf(input.charAt(0))), input.charAt(1));
     }
@@ -125,7 +126,7 @@ public class Jugador {
                 this.trucoUsado = true;
                 setTruco(true);
                 this.vidas = decreaseVidas();
-                System.out.println("Acabas de utilizar el truco, vidas restantes: " + this.vidas);
+                System.out.println("Acabas de utilizar el truco, vidas restantes: " + this.vidas + "\n");
             } else {
                 System.out.println("Ya has utilizado el truco. Pierdes el turno.");
             }
@@ -164,10 +165,7 @@ public class Jugador {
             alive = false;
             return;
         }
-
-        System.out.println(colorize("Partida continua", Attribute.BRIGHT_CYAN_TEXT()));
-        System.out.println();
-        System.out.println(colorize("------------------------------------", Attribute.BRIGHT_GREEN_TEXT()));
+        System.out.println(colorize("----------------------------------------------", Attribute.BRIGHT_GREEN_TEXT()));
         System.out.println();
     }
 
