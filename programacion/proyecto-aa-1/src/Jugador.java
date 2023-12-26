@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.diogonunes.jcolor.Attribute;
@@ -14,6 +15,7 @@ public class Jugador {
     boolean hasWon = false;
     private boolean truco;
     private boolean trucoUsado = false;
+    Attribute textColor = Attribute.WHITE_TEXT();
     private int increaseVidas(){
         return vidas + 1;
     }
@@ -35,8 +37,29 @@ public class Jugador {
         return tableroJugador;
     }
 
+    void printTableroJugador(boolean trucos) {
+        for (char[] fila : this.tablero.tablero) {
+            String regex = trucos ? "[VX]" : "[" + this.enemigo.charAt(0) + "VX]";
+            String fila1 = Arrays.toString(fila);
+            String fila2 = fila1.replaceAll(regex, "L");
+            fila1 = fila2.replaceAll("[\\[\\],]", " ");
 
-    void printTableroJugador(boolean trucos){}
+            fila = fila1.toCharArray();
+            for (int i = 0; i < fila.length; i++) {
+                if (fila[i] == this.nombre.charAt(0)) {
+                    System.out.print(colorize(String.valueOf(fila[i]), this.textColor, Attribute.BACK_COLOR(18, 18, 18)));
+                } else if (fila[i] == this.enemigo.charAt(0)){
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_RED_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                } else if (fila[i] == 'S'){
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_GREEN_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                } else {
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.WHITE_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 
     // Only useful for debugging reasons.
     //void printTableroReal(){
