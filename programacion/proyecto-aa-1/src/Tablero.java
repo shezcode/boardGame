@@ -3,13 +3,13 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tablero {
-    private int dimension;
+    private final int dimension;
     char[][] tablero;
-    private char letraJugador;
-    private char letraEnemigo;
+    private final char letraJugador;
+    private final char letraEnemigo;
     private int NUMERO_ENEMIGOS;
     private int[] posicionJugador = new int[2];
-    private int[] posicionSalida = new int[2];
+    private final int[] posicionSalida = new int[2];
     private int[] posicionBomba = new int[2];
     private int[][] posicionesVidas = new int[2][2];
     int[][] posicionesEnemigos = new int[NUMERO_ENEMIGOS][2];
@@ -30,8 +30,8 @@ public class Tablero {
         int[] arr = new int[2];
         for(int i = 0; i < this.NUMERO_ENEMIGOS; i++){
             do {
-                arr[0] = generator.nextInt(6);
-                arr[1] = generator.nextInt(6);
+                arr[0] = generator.nextInt(dimension);
+                arr[1] = generator.nextInt(dimension);
             } while (Utils.contains(this.posicionesEnemigos, arr));
             this.posicionesEnemigos[i][0] = arr[0];
             this.posicionesEnemigos[i][1] = arr[1];
@@ -43,8 +43,8 @@ public class Tablero {
     int[] generarPosicionJugador(){
         int[] arr = new int[2];
         do {
-            arr[0] = generator.nextInt(6);
-            arr[1] = generator.nextInt(6);
+            arr[0] = generator.nextInt(dimension);
+            arr[1] = generator.nextInt(dimension);
         } while (Utils.contains(this.posicionesEnemigos, arr));
         posicionJugador[0] = arr[0];
         posicionJugador[1] = arr[1];
@@ -53,8 +53,8 @@ public class Tablero {
 
     int[] generarCasillaSalida(){
         do {
-            posicionSalida[0] = generator.nextInt(6);
-            posicionSalida[1] = generator.nextInt(6);
+            posicionSalida[0] = generator.nextInt(dimension);
+            posicionSalida[1] = generator.nextInt(dimension);
         } while (Arrays.equals(posicionSalida, posicionJugador) || Utils.contains(this.posicionesEnemigos, posicionSalida));
         return posicionSalida;
     }
@@ -73,8 +73,8 @@ public class Tablero {
         int[] arr = new int[2];
         for(int i = 0; i < 2; i++){
             do {
-                arr[0] = generator.nextInt(6);
-                arr[1] = generator.nextInt(6);
+                arr[0] = generator.nextInt(dimension);
+                arr[1] = generator.nextInt(dimension);
             } while (Arrays.equals(arr, posicionJugador)
                     || Arrays.equals(arr, posicionSalida)
                     || Utils.contains(posicionesVidas, arr)
@@ -181,44 +181,16 @@ public class Tablero {
         return dimension;
     }
 
-    void setDimension(int dimension) {
-        this.dimension = dimension;
-    }
-
     int getNUMERO_ENEMIGOS() {
         return NUMERO_ENEMIGOS;
-    }
-
-    public char[][] getTablero() {
-        return tablero;
     }
 
     public char getLetraJugador() {
         return letraJugador;
     }
-
     public char getLetraEnemigo() {
         return letraEnemigo;
     }
 
-    public int[] getPosicionSalida() {
-        return posicionSalida;
-    }
-
-    public int[] getPosicionBomba() {
-        return posicionBomba;
-    }
-
-    public int[][] getPosicionesVidas() {
-        return posicionesVidas;
-    }
-
-    public int[][] getPosicionesEnemigos() {
-        return posicionesEnemigos;
-    }
-
-    public Random getGenerator() {
-        return generator;
-    }
-
 }
+

@@ -57,6 +57,7 @@ public class Juego {
             try {
                 character = enumJugador.valueOf(input);
             } catch (IllegalArgumentException e){
+                System.out.println(colorize("Input incorrecto! Introduce una opcion valida: ", Attribute.BRIGHT_RED_TEXT()));
                 character = null;
             }
         } while (character == null);
