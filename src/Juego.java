@@ -7,8 +7,8 @@ public class Juego {
     private static final Scanner scanner = new Scanner(System.in);
     void intro(){
         System.out.println(colorize("Board Game", Attribute.BRIGHT_CYAN_TEXT()));
-        System.out.println(colorize("Reach the exit square 'S' before the other player and without losing all your lives! \n" +
-                        "To move, insert to number of squares to move ( de 1 a 3 ) and the direction (w, a, s, d) \n" +
+        System.out.println(colorize("Reach the exit square 'E' before the other player and without losing all your lives! \n" +
+                        "To move, insert to number of squares to move ( from 1 to 3 ) and the direction (w, a, s, d) \n" +
                         "For example: 2d to move 2 squares to the right."
    , Attribute.BRIGHT_MAGENTA_TEXT()));
     }
@@ -19,6 +19,10 @@ public class Juego {
         int dimension;
         try {
             dimension = Integer.parseInt(String.valueOf(input.charAt(0)));
+            if (dimension < 6 || dimension > 10) {
+                System.out.println(colorize("Invalid input, defaulting to 6x6", Attribute.BRIGHT_RED_TEXT()));
+                dimension = 6;
+            }
         } catch (InputMismatchException e){
             System.out.println(colorize("Invalid input, defaulting to 6x6", Attribute.BRIGHT_RED_TEXT()));
             dimension = 6;

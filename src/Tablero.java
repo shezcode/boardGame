@@ -94,7 +94,7 @@ public class Tablero {
                 if (Arrays.equals(posJugador, arr)) {
                     tablero[i][j] = this.letraJugador;
                 } else if (Arrays.equals(posicionSalida, arr)){
-                    tablero[i][j] = 'S';
+                    tablero[i][j] = 'E';
                 } else if (Arrays.equals(posicionBomba, arr)){
                     // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. Bart.
                     tablero[i][j] = 'X';

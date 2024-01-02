@@ -50,8 +50,8 @@ public class Jugador {
                     System.out.print(colorize(String.valueOf(fila[i]), this.textColor, Attribute.BACK_COLOR(18, 18, 18)));
                 } else if (fila[i] == this.enemigo.charAt(0)){
                     System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_RED_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
-                } else if (fila[i] == 'S'){
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_GREEN_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                } else if (fila[i] == 'E'){
+                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_MAGENTA_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
                 } else {
                     System.out.print(colorize(String.valueOf(fila[i]), Attribute.WHITE_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
                 }
@@ -131,7 +131,7 @@ public class Jugador {
         }
         if (movimiento.direccion == 'b'){
             if (!hasBomb){
-                System.out.println("You don't have the bomb! :(");
+                System.out.println("You don't have the bomb! :( \n");
                 return;
             }
             int[] pos = tablero.getPosicionJugador();
@@ -158,20 +158,20 @@ public class Jugador {
 
     void evaluarMovimiento(int[] nuevaPos){
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == this.enemigo.charAt(0)){
-           this.vidas = decreaseVidas();
-           System.out.println(colorize("You just landed on an enemy. " + this.vidas + " lives left.", Attribute.RED_TEXT()));
-           tablero.killPosicionesEnemigos(nuevaPos);
+            this.vidas = decreaseVidas();
+            System.out.println(colorize("You just landed on an enemy. " + this.vidas + " lives left. \n", Attribute.RED_TEXT()));
+            tablero.killPosicionesEnemigos(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
             this.vidas = increaseVidas();
-            System.out.println(colorize("You just landed on an extra life. " + this.vidas + " lives left.", Attribute.BRIGHT_GREEN_TEXT()));
+            System.out.println(colorize("You just landed on an extra life. " + this.vidas + " lives left. \n", Attribute.BRIGHT_GREEN_TEXT()));
             tablero.killVida(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'X'){
             setHasBomb(true);
             tablero.killBomba(nuevaPos);
         }
-        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'S'){
+        if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'E'){
             setHasWon(true);
         }
     }
