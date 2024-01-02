@@ -25,7 +25,7 @@ Valid examples:
 ```zsh
 3w > Moves 3 squares up.
 1d > Moves 1 squares to the right.
-2d > Moves 2 squares to the left.
+2a > Moves 2 squares to the left.
 ```
 
 ### Cheats
