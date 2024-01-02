@@ -23,9 +23,9 @@ The movement, like many keyboard games is 'wasd', but before inserting the direc
 Valid examples: 
 
 ```zsh
-3w -> Moves 3 squares up.
-1d -> Moves 1 squares to the right.
-2d -> Moves 2 squares to the left.
+3w > Moves 3 squares up.
+1d > Moves 1 squares to the right.
+2d > Moves 2 squares to the left.
 ```
 
 ### Cheats

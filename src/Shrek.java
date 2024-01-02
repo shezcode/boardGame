@@ -1,9 +1,4 @@
 import com.diogonunes.jcolor.Attribute;
-
-import java.util.Arrays;
-
-import static com.diogonunes.jcolor.Ansi.colorize;
-
 public class Shrek extends Jugador {
     public Shrek(){
         this.nombre = "Shrek";

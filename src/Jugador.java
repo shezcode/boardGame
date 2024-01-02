@@ -74,9 +74,9 @@ public class Jugador {
         String input;
         do {
             if (hasBomb){
-                System.out.println("Tienes una bomba en el inventario (pulsa 1b para detonar)");
+                System.out.println("You have bomb in your inventory (press 1b to detonate)");
             }
-            System.out.print(colorize( this.nombre + " introduce tu movimiento: ", Attribute.BRIGHT_CYAN_TEXT()));
+            System.out.print(colorize( this.nombre + " insert your move: ", Attribute.BRIGHT_CYAN_TEXT()));
             input = scanner.nextLine().toLowerCase();
             isValid = Utils.validarInput(input);
             System.out.println();
@@ -131,7 +131,7 @@ public class Jugador {
         }
         if (movimiento.direccion == 'b'){
             if (!hasBomb){
-                System.out.println("No tienes la bomba! :(");
+                System.out.println("You don't have the bomb! :(");
                 return;
             }
             int[] pos = tablero.getPosicionJugador();
@@ -149,24 +149,22 @@ public class Jugador {
                 this.trucoUsado = true;
                 setTruco(true);
                 this.vidas = decreaseVidas();
-                System.out.println("Acabas de utilizar el truco, vidas restantes: " + this.vidas + "\n");
+                System.out.println("You cheated, lives left: " + this.vidas + "\n");
             } else {
-                System.out.println("Ya has utilizado el truco. Pierdes el turno.");
+                System.out.println("You've already cheated. You lose your turn.");
             }
-
-
         }
     }
 
     void evaluarMovimiento(int[] nuevaPos){
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == this.enemigo.charAt(0)){
            this.vidas = decreaseVidas();
-           System.out.println(colorize("Acabas de caer en la posicion de un enemigo. " + this.vidas + " vidas restantes.", Attribute.RED_TEXT()));
+           System.out.println(colorize("You just landed on an enemy. " + this.vidas + " lives left.", Attribute.RED_TEXT()));
            tablero.killPosicionesEnemigos(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'V'){
             this.vidas = increaseVidas();
-            System.out.println(colorize("Acabas de caer en una vida extra. " + this.vidas + " restantes.", Attribute.BRIGHT_GREEN_TEXT()));
+            System.out.println(colorize("You just landed on an extra life. " + this.vidas + " lives left.", Attribute.BRIGHT_GREEN_TEXT()));
             tablero.killVida(nuevaPos);
         }
         if (tablero.tablero[nuevaPos[0]][nuevaPos[1]] == 'X'){
@@ -180,11 +178,11 @@ public class Jugador {
 
     void evaluarPartida(){
         if (hasWon){
-            System.out.println(colorize(this.nombre + " ha ganado!", Attribute.BRIGHT_CYAN_TEXT()));
+            System.out.println(colorize(this.nombre + " has won!", Attribute.BRIGHT_CYAN_TEXT()));
             return;
         }
         if (!isAlive()){
-            System.out.println(colorize(this.nombre + " ha perdido!", Attribute.BRIGHT_CYAN_TEXT()));
+            System.out.println(colorize(this.nombre + " has lost!", Attribute.BRIGHT_CYAN_TEXT()));
             alive = false;
             return;
         }

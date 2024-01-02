@@ -1,5 +1,4 @@
 import com.diogonunes.jcolor.Attribute;
-
 public class Peter extends Jugador {
     public Peter(){
         this.nombre = "Peter";
