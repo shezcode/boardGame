@@ -11,8 +11,7 @@ public class Juego {
         System.out.println(colorize("Board Game", Attribute.BRIGHT_CYAN_TEXT()));
         System.out.println(colorize("Reach the exit square 'E' before the other player and without losing all your lives! \n" +
                         "To move, insert to number of squares to move ( from 1 to 3 ) and the direction (w, a, s, d) \n" +
-                        "For example: 2d to move 2 squares to the right."
-   , Attribute.BRIGHT_MAGENTA_TEXT()));
+                        "For example: 2d to move 2 squares to the right.", Attribute.BRIGHT_MAGENTA_TEXT()));
     }
 
     int pedirDimensionTablero(){
@@ -60,6 +59,9 @@ public class Juego {
             System.out.print(colorize("HOMER ", Attribute.BRIGHT_CYAN_TEXT()));
             System.out.print(colorize("BART ", Attribute.BRIGHT_YELLOW_TEXT()));
             System.out.print(colorize("PETER ", Attribute.BRIGHT_BLUE_TEXT()));
+            System.out.print(colorize("MICHAEL ", Attribute.TEXT_COLOR(105)));
+            System.out.print(colorize("SHERLOCK ", Attribute.TEXT_COLOR(208)));
+            System.out.print(colorize("WALTER ", Attribute.TEXT_COLOR(196)));
             System.out.print(colorize("SHREK \n", Attribute.BRIGHT_GREEN_TEXT()));
             System.out.print("Your choice: ");
             input = scanner.nextLine().toUpperCase();

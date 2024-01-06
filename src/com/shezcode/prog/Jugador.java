@@ -17,7 +17,7 @@ public class Jugador {
     boolean hasWon = false;
     private boolean truco;
     private boolean trucoUsado = false;
-    Attribute textColor = Attribute.WHITE_TEXT();
+    Attribute textColor;
     private int increaseVidas(){
         return vidas + 1;
     }
@@ -49,7 +49,7 @@ public class Jugador {
 
             for (char c : fila) {
                 if (c == this.nombre.charAt(0)) {
-                    System.out.print(colorize(String.valueOf(c), this.textColor, Attribute.BACK_COLOR(18, 18, 18)));
+                    System.out.print(colorize(String.valueOf(c), textColor, Attribute.BACK_COLOR(18, 18, 18)));
                 } else if (c == this.enemigo.charAt(0)) {
                     System.out.print(colorize(String.valueOf(c), Attribute.BRIGHT_RED_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
                 } else if (c == 'E') {

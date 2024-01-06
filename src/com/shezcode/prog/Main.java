@@ -13,6 +13,9 @@ public class Main {
             case BART -> new Bart();
             case PETER -> new Peter();
             case SHREK -> new Shrek();
+            case MICHAEL -> new Michael();
+            case SHERLOCK -> new Sherlock();
+            case WALTER -> new Walter();
         };
 
         jugador1.tablero = jugador1.initTablero(dimensionTablero, numeroEnemigos);
@@ -23,6 +26,9 @@ public class Main {
             case BART -> new Bart();
             case PETER -> new Peter();
             case SHREK -> new Shrek();
+            case MICHAEL -> new Michael();
+            case SHERLOCK -> new Sherlock();
+            case WALTER -> new Walter();
         };
 
          jugador2.tablero = jugador2.initTablero(dimensionTablero, numeroEnemigos);
