@@ -25,7 +25,7 @@ public class Juego {
                 System.out.println(colorize("Invalid input, defaulting to 6x6", Attribute.BRIGHT_RED_TEXT()));
                 dimension = 6;
             }
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException | StringIndexOutOfBoundsException |NumberFormatException e){
             System.out.println(colorize("Invalid input, defaulting to 6x6", Attribute.BRIGHT_RED_TEXT()));
             dimension = 6;
         }
@@ -34,10 +34,15 @@ public class Juego {
 
     int pedirDificultad(){
         String input;
-        do {
-            System.out.print(colorize("Select a difficulty: Easy, Medium or Hard (E, M, H) [default: E]: ", Attribute.BRIGHT_GREEN_TEXT()));
-            input = scanner.nextLine();
-        } while (input.toUpperCase().charAt(0) != 'E' && input.toUpperCase().charAt(0) != 'M' && input.toUpperCase().charAt(0) != 'H');
+        try {
+            do {
+                System.out.print(colorize("Select a difficulty: Easy, Medium or Hard (E, M, H) [default: E]: ", Attribute.BRIGHT_GREEN_TEXT()));
+                input = scanner.nextLine();
+            } while (input.toUpperCase().charAt(0) != 'E' && input.toUpperCase().charAt(0) != 'M' && input.toUpperCase().charAt(0) != 'H');
+        } catch (StringIndexOutOfBoundsException e){
+            System.out.println(colorize("Invalid input, defaulting to Easy", Attribute.BRIGHT_RED_TEXT()));
+            input = "E";
+        }
 
         return switch (input.toUpperCase().charAt(0)){
             case 'M' -> 12;
