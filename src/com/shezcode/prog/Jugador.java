@@ -45,17 +45,17 @@ public class Jugador {
             String fila1 = Arrays.toString(fila);
             String fila2 = fila1.replaceAll(regex, "L");
             fila1 = fila2.replaceAll("[\\[\\],]", " ");
-
             fila = fila1.toCharArray();
-            for (int i = 0; i < fila.length; i++) {
-                if (fila[i] == this.nombre.charAt(0)) {
-                    System.out.print(colorize(String.valueOf(fila[i]), this.textColor, Attribute.BACK_COLOR(18, 18, 18)));
-                } else if (fila[i] == this.enemigo.charAt(0)){
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_RED_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
-                } else if (fila[i] == 'E'){
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.BRIGHT_MAGENTA_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+
+            for (char c : fila) {
+                if (c == this.nombre.charAt(0)) {
+                    System.out.print(colorize(String.valueOf(c), this.textColor, Attribute.BACK_COLOR(18, 18, 18)));
+                } else if (c == this.enemigo.charAt(0)) {
+                    System.out.print(colorize(String.valueOf(c), Attribute.BRIGHT_RED_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                } else if (c == 'E') {
+                    System.out.print(colorize(String.valueOf(c), Attribute.BRIGHT_MAGENTA_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
                 } else {
-                    System.out.print(colorize(String.valueOf(fila[i]), Attribute.WHITE_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
+                    System.out.print(colorize(String.valueOf(c), Attribute.WHITE_TEXT(), Attribute.BACK_COLOR(18, 18, 18)));
                 }
             }
             System.out.println();

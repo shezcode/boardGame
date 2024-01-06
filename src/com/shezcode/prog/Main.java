@@ -27,10 +27,12 @@ public class Main {
 
          jugador2.tablero = jugador2.initTablero(dimensionTablero, numeroEnemigos);
 
-        do {
+        while (jugador1.alive && !jugador1.hasWon) {
             jugador1.turnoJugador();
             if (jugador1.hasWon || !jugador1.alive) break;
+
             jugador2.turnoJugador();
-        } while ((jugador1.alive && !jugador1.hasWon) && ((jugador2.alive && !jugador2.hasWon)));
+            if (!jugador2.alive || jugador2.hasWon) break;
+        }
     }
 }
