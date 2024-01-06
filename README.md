@@ -6,7 +6,7 @@ A player wins after reaching the exit square or if the other player loses all th
 
 ## Usage
 
-Clone the repo and run the `Main` class from your IDE or download the latest release and execute the .jar file: 
+Clone the repo and run the `com.shezcode.prog.Main` class from your IDE or download the latest release and execute the .jar file: 
 
 ```zsh
 java -jar prog.jar

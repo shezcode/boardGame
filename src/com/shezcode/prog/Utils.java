@@ -1,3 +1,5 @@
+package com.shezcode.prog;
+
 import java.util.Arrays;
 
 public class Utils {

@@ -1,3 +1,5 @@
+package com.shezcode.prog;
+
 public class Movimiento {
     public int casillas;
     public char direccion;

@@ -1,3 +1,5 @@
+package com.shezcode.prog;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -96,7 +98,7 @@ public class Tablero {
                 } else if (Arrays.equals(posicionSalida, arr)){
                     tablero[i][j] = 'E';
                 } else if (Arrays.equals(posicionBomba, arr)){
-                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. Bart.
+                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. com.shezcode.prog.Bart.
                     tablero[i][j] = 'X';
                 } else if (Utils.contains(posEnemigos, arr)){
                     tablero[i][j] = this.letraEnemigo;

@@ -1,3 +1,5 @@
+package com.shezcode.prog;
+
 import static com.diogonunes.jcolor.Ansi.colorize;
 import com.diogonunes.jcolor.Attribute;
 import java.util.InputMismatchException;
@@ -31,10 +33,9 @@ public class Juego {
     }
 
     int pedirDificultad(){
-        System.out.println(colorize("Select a difficulty: Easy, Medium or Hard (E, M, H) [default: E] ", Attribute.BRIGHT_GREEN_TEXT()));
         String input;
         do {
-            System.out.print("Difficulty: ");
+            System.out.print(colorize("Select a difficulty: Easy, Medium or Hard (E, M, H) [default: E]: ", Attribute.BRIGHT_GREEN_TEXT()));
             input = scanner.nextLine();
         } while (input.toUpperCase().charAt(0) != 'E' && input.toUpperCase().charAt(0) != 'M' && input.toUpperCase().charAt(0) != 'H');
 
