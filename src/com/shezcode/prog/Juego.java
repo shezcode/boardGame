@@ -19,7 +19,7 @@ public class Juego {
         String input = scanner.nextLine();
         int dimension;
         try {
-            dimension = Integer.parseInt(String.valueOf(input.charAt(0)));
+            dimension = Integer.parseInt(String.valueOf(input));
             if (dimension < 6 || dimension > 10) {
                 System.out.println(colorize("Invalid input, defaulting to 6x6", Attribute.BRIGHT_RED_TEXT()));
                 dimension = 6;
