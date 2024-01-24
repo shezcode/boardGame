@@ -101,8 +101,8 @@ public class Jugador {
         if (movimiento.direccion == 'd'){
             int i = tablero.getPosicionJugador()[0];
             int j = tablero.getPosicionJugador()[1] + movimiento.casillas;
-            if (j > 5){
-                j = 5;
+            if (j > tablero.getDimension() - 1){
+                j = tablero.getDimension() - 1;
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
@@ -123,8 +123,8 @@ public class Jugador {
         if (movimiento.direccion == 's'){
             int i = tablero.getPosicionJugador()[0] + movimiento.casillas;
             int j = tablero.getPosicionJugador()[1];
-            if (i > 5){
-                i = 5;
+            if (i > tablero.getDimension() - 1){
+                i = tablero.getDimension() - 1;
             }
             int[] nuevaPosicion = {i, j};
             tablero.setPosicionJugador(nuevaPosicion);
