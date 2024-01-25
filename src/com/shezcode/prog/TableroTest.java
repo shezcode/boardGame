@@ -17,7 +17,7 @@ class TableroTest {
 
     @BeforeEach
     public void init(){
-        tableroTest = new Tablero('M', 'E', 8, 6);
+        tableroTest = new Tablero('M', 'E', 8, 8);
         posEnemigos = tableroTest.generarPosicionEnemigos();
         posJugador = tableroTest.generarPosicionJugador();
         posSalida = tableroTest.generarCasillaSalida();
@@ -28,7 +28,7 @@ class TableroTest {
     @Test
     void tableroImplementadoCorrecto() {
         Assertions.assertEquals(8, tableroTest.getDimension());
-        Assertions.assertEquals(6, tableroTest.getNUMERO_ENEMIGOS());
+        Assertions.assertEquals(8, tableroTest.getNUMERO_ENEMIGOS());
         Assertions.assertEquals('M', tableroTest.getLetraJugador());
         Assertions.assertEquals('E', tableroTest.getLetraEnemigo());
     }
@@ -49,4 +49,5 @@ class TableroTest {
         Assertions.assertFalse(Utils.contains(posEnemigos, posBomba));
         Assertions.assertFalse(Arrays.deepEquals(posEnemigos, posVidas));
     }
+
 }

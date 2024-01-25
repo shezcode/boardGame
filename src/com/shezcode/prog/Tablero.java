@@ -111,14 +111,6 @@ public class Tablero {
         }
     }
 
-    int[] getPosicionJugador() {
-        return this.posicionJugador;
-    }
-
-    void setPosicionJugador(int[] posicionJugador) {
-        this.posicionJugador = posicionJugador;
-    }
-
     void killPosicionesEnemigos(int[] posicion){
         int[][] nuevaPosicionEnemigos = new int[NUMERO_ENEMIGOS - 1][2];
         int index = 0;
@@ -187,6 +179,10 @@ public class Tablero {
         return NUMERO_ENEMIGOS;
     }
 
+    void setNUMERO_ENEMIGOS(int NUMERO_ENEMIGOS){
+        this.NUMERO_ENEMIGOS = NUMERO_ENEMIGOS;
+    }
+
     public char getLetraJugador() {
         return letraJugador;
     }
@@ -194,5 +190,20 @@ public class Tablero {
         return letraEnemigo;
     }
 
+    int[] getPosicionJugador() {
+        return this.posicionJugador;
+    }
+
+    void setPosicionJugador(int[] posicionJugador) {
+        this.posicionJugador = posicionJugador;
+    }
+
+    void setPosicionesEnemigos(int[][] posicionesEnemigos){
+        this.posicionesEnemigos = posicionesEnemigos;
+    }
+
+    void setPosicionBomba(int[] posicionBomba){
+        this.posicionBomba = posicionBomba;
+    }
 }
 

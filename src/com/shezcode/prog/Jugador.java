@@ -13,7 +13,7 @@ public class Jugador {
     public String enemigo;
     Tablero tablero;
     boolean alive = true;
-    private boolean hasBomb = false;
+    boolean hasBomb = false;
     boolean hasWon = false;
     private boolean truco;
     private boolean trucoUsado = false;
@@ -21,7 +21,7 @@ public class Jugador {
     private int increaseVidas(){
         return vidas + 1;
     }
-    private int decreaseVidas(){
+    public int decreaseVidas(){
         return vidas - 1;
     }
     private boolean isAlive(){
@@ -37,6 +37,12 @@ public class Jugador {
         tableroJugador.generarCasillasVidas();
         tableroJugador.insertPosiciones(posJugador, posEnemigos);
         return tableroJugador;
+    }
+
+    public Tablero initDummy(int dimension, int[] posJugador){
+        Tablero tableroDummy = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0), dimension, 0);
+        tableroDummy.setPosicionJugador(posJugador);
+        return tableroDummy;
     }
 
     void printTableroJugador(boolean trucos) {
@@ -221,5 +227,13 @@ public class Jugador {
 
     public void setTruco(boolean truco) {
         this.truco = truco;
+    }
+
+    public void setVidas(int vidas){
+        this.vidas = vidas;
+    }
+
+    public int getVidas(){
+        return this.vidas;
     }
 }
