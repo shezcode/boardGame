@@ -193,15 +193,15 @@ public class Jugador {
     }
 
     void turnoJugador(){
-        //printTableroJugador(isTruco());
+        printTableroJugador(isTruco());
         setTruco(false);
-        printTableroReal();
+        //printTableroReal();
         Movimiento movimiento = pedirMovimiento();
         registrarMovimiento(movimiento);
         this.tablero.getPosicionJugador();
 
-        printTableroReal();
-        //printTableroJugador(isTruco());
+        //printTableroReal();
+        printTableroJugador(isTruco());
         evaluarPartida();
     }
 
