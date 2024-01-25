@@ -1,6 +1,8 @@
-package com.shezcode.prog;
+package com.shezcode.prog.players;
 
 import com.diogonunes.jcolor.Attribute;
+import com.shezcode.prog.Jugador;
+
 public class Homer extends Jugador {
    Attribute bgColor = Attribute.BACK_COLOR(18, 18, 18);
 

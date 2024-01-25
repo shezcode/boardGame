@@ -1,6 +1,8 @@
-package com.shezcode.prog;
+package com.shezcode.prog.players;
 
 import com.diogonunes.jcolor.Attribute;
+import com.shezcode.prog.Jugador;
+
 public class Sherlock extends Jugador {
 
     public Sherlock(){

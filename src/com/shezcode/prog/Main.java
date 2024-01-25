@@ -1,5 +1,7 @@
 package com.shezcode.prog;
 
+import com.shezcode.prog.players.*;
+
 public class Main {
     public static void main(String[] args) {
         Juego juego = new Juego();
@@ -36,9 +38,10 @@ public class Main {
         while (jugador1.alive && !jugador1.hasWon) {
             jugador1.turnoJugador();
             if (jugador1.hasWon || !jugador1.alive) break;
-
+            Utils.wait(1000);
             jugador2.turnoJugador();
             if (!jugador2.alive || jugador2.hasWon) break;
+            Utils.wait(1000);
         }
     }
 }

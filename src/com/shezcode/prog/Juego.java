@@ -2,6 +2,8 @@ package com.shezcode.prog;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 import com.diogonunes.jcolor.Attribute;
+import com.shezcode.prog.players.enumJugador;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

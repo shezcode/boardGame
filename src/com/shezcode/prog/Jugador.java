@@ -8,16 +8,16 @@ import static com.diogonunes.jcolor.Ansi.colorize;
 
 public class Jugador {
     private static final Scanner scanner = new Scanner(System.in);
-    int vidas = 3;
-    String nombre;
-    String enemigo;
+    public int vidas = 3;
+    public String nombre;
+    public String enemigo;
     Tablero tablero;
     boolean alive = true;
     private boolean hasBomb = false;
     boolean hasWon = false;
     private boolean truco;
     private boolean trucoUsado = false;
-    Attribute textColor;
+    public Attribute textColor;
     private int increaseVidas(){
         return vidas + 1;
     }
@@ -193,6 +193,8 @@ public class Jugador {
     }
 
     void turnoJugador(){
+        System.out.println(colorize(this.nombre.toUpperCase() + "'S TURN: ", this.textColor, Attribute.BACK_COLOR(12,12,12)));
+        System.out.println();
         printTableroJugador(isTruco());
         setTruco(false);
         //printTableroReal();

@@ -98,7 +98,7 @@ public class Tablero {
                 } else if (Arrays.equals(posicionSalida, arr)){
                     tablero[i][j] = 'E';
                 } else if (Arrays.equals(posicionBomba, arr)){
-                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. com.shezcode.prog.Bart.
+                    // Llamo X a la posicion de la bomba, para evitar interferencia con la B de Jugadores. com.shezcode.prog.players.Bart.
                     tablero[i][j] = 'X';
                 } else if (Utils.contains(posEnemigos, arr)){
                     tablero[i][j] = this.letraEnemigo;

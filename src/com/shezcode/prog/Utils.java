@@ -34,4 +34,12 @@ public class Utils {
        return true;
     }
 
+    static void wait(int ms){
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
 }
