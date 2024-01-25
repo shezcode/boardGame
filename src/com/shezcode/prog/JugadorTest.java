@@ -1,6 +1,6 @@
 package com.shezcode.prog;
 
-import com.shezcode.prog.players.Homer;
+import com.diogonunes.jcolor.Attribute;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 class JugadorTest {
-    public Jugador jugadorTest = new Homer();
+    public Jugador jugadorTest = new Jugador("Homer", "Flanders", Attribute.BRIGHT_CYAN_TEXT());
 
     @BeforeEach
     public void init() {
