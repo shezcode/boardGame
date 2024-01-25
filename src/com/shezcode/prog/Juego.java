@@ -2,7 +2,6 @@ package com.shezcode.prog;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 import com.diogonunes.jcolor.Attribute;
-import com.shezcode.prog.players.enumJugador;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -77,4 +76,17 @@ public class Juego {
 
         return character;
     }
+
+   Jugador switchCharacters(enumJugador nombre) {
+       Jugador jugador = switch(nombre) {
+           case HOMER -> new Jugador("Homer", "Flanders", Attribute.BRIGHT_CYAN_TEXT());
+           case BART -> new Jugador("Bart", "Krusty", Attribute.BRIGHT_YELLOW_TEXT());
+           case PETER -> new Jugador("Peter", "Meg", Attribute.BRIGHT_BLUE_TEXT());
+           case SHREK -> new Jugador("Shrek", "Principe", Attribute.GREEN_TEXT());
+           case MICHAEL -> new Jugador("Michael", "Toby", Attribute.TEXT_COLOR(105));
+           case SHERLOCK -> new Jugador("Sherlock", "Moriarty", Attribute.TEXT_COLOR(208));
+           case WALTER -> new Jugador("Walter", "Gus", Attribute.TEXT_COLOR(196));
+       };
+       return jugador;
+   }
 }

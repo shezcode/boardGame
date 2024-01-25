@@ -28,6 +28,12 @@ public class Jugador {
         return vidas > 0;
     }
 
+    public Jugador(String nombre, String enemigo, Attribute textColor){
+        this.nombre = nombre;
+        this.enemigo = enemigo;
+        this.textColor = textColor;
+    }
+
     public Tablero initTablero(int dimension, int enemigos){
         Tablero tableroJugador = new Tablero(this.nombre.charAt(0), this.enemigo.charAt(0), dimension, enemigos);
         int[][] posEnemigos = tableroJugador.generarPosicionEnemigos();
